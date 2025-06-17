@@ -1,0 +1,218 @@
+/* Stylesheet for main 'frame' */
+@font-face {
+  font-family: "Inter";
+  src:
+    url("../assets/fonts/inter.woff2") format("woff2"),
+    url("../assets/fonts/inter.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Script";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src:
+    local("Style Script Regular"),
+    local("StyleScript-Regular"),
+    url(../assets/fonts/style-script.woff2) format("woff2"),
+    url(../assets/fonts/style-script.woff) format("woff");
+  font-display: auto;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --gray-100: hsl(0, 0%, 89%);
+  --gray-200: hsl(0, 0%, 70%);
+  --gray-500: hsl(0, 0%, 51%);
+  --gray-600: hsl(0, 0%, 33%);
+  --gray-700: hsl(0, 0%, 17%);
+  --pure-black: #000000;
+  --pure-white: hsl(0, 0%, 100%);
+  --red-500: hsl(39, 77%, 73%);
+  --font-family: "Inter", sans-serif;
+}
+
+html {
+  background-color: var(--gray-100);
+  color: var(--pure-black);
+  font-size: 1rem;
+  line-height: 1.2em;
+  font-family: var(--font-family);
+  /* height: 100vh; */
+}
+
+
+#tasks-div button {
+  padding: 0.5em 1em;
+  max-width: 15ch;
+  background-color: var(--gray-600);
+  color: var(--pure-white);
+  font-weight: bold;
+}
+
+p {
+  margin-inline-start: 1rem;
+  line-height: 1.2em;
+  margin-block: 0.25rem;
+}
+
+#tasks-div button:hover {
+  cursor: pointer;
+  color: var(--red-500);
+}
+
+h1 {
+  font-family: "Script", "Inter", sans-serif;
+  font-weight: bold;
+  line-height: 1.2em;
+  margin-block:0.25rem;
+  text-align: center;
+}
+
+h1:hover {
+  color: greenyellow;
+}
+
+.highlighted-text {
+  color: red;
+}
+
+.wrapper {
+  width: clamp(450px, 80%, 1440px);
+  background-color: var(--gray-200);
+  margin-inline: auto;
+}
+
+#heading,
+#status-message {
+  background-color: var(--gray-600);
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+#usr-img-div {
+  width: 50%;
+  margin-inline: auto;
+  margin-block-end: 0.5rem;
+  margin-block-start: 2rem;
+}
+
+#usr-img {
+  border-radius: 50%;
+  width: 100%;
+  height: auto;
+}
+
+#user-id {
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  color: var(--pure-white);
+  margin-block-end: 2rem;
+  margin-inline: 0px;
+  padding-inline: 0px;
+}
+
+#filter-date {
+  margin-inline-start: 1rem;
+  background-color: var(--gray-600);
+  color: var(--pure-white);
+  font-size: 1rem;
+  margin-block: 1rem;
+  width: 15ch;
+}
+
+#btn-date-go{
+    padding:0.25rem 0.75rem;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-inline-start: 0.25rem;
+    background-color: var(--gray-200);
+    color: var(--pure-black);
+}
+#heading {
+  text-align: center;
+  font-size: 1.5rem;
+  display: flex;
+  font-weight: bold;
+}
+
+/* #buffer {
+  display: none;
+} */
+
+/* #project-details {
+  display: none;
+} */
+
+#projects-div {
+  margin-block-start: 2rem;
+}
+
+#projects-div p:not(.sidebar-heading), #tasks-div p:not(.sidebar-heading){
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+#projects-div p:hover, #tasks-div p:hover{
+  cursor: pointer;
+  color: var(--red-500);
+}
+
+/*Appears at the bottom to show status / error messages"*/
+#status-message {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  text-align: center;
+  color: var(--red-500);
+  margin-inline-start: 0px;
+  font-weight: bold;
+}
+
+#content {
+  display: grid;
+}
+
+#side-bar {
+  background-color: var(--gray-600);
+  color: var(--pure-white);
+  display: block;
+}
+
+.sidebar-heading {
+  font-weight: bold;
+  font-style: normal;
+  margin: 0.5rem;
+}
+
+#details {
+  display: grid;
+  grid-template-rows: 0.5fr 6fr 1fr 0.25fr;
+}
+
+@media screen and (width > 1000px) {
+  #side-bar {
+    display: block;
+    background-color: var(--gray-600);
+    color: var(--pure-white);
+  }
+  /* #buffer {
+    display: block;
+  } */
+  #project-details {
+    display: block;
+  }
+  #content {
+    grid-template-columns: 1fr 5fr;
+  }
+}
+

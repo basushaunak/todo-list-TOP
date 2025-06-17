@@ -1,0 +1,99 @@
+/* Stylesheet for modtodoitems.js */
+#main-content{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+
+#item-due-date {
+  width: 15ch;
+}
+
+#item-due-time {
+  width:10.5ch;
+}
+
+#input-details {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 2rem;
+}
+
+#buttons-item {
+  grid-column: span 2;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#buttons-item button{
+  padding: 0.25rem 1rem;
+}
+
+input,
+textarea,
+button,
+select {
+  font-size: 1rem;
+}
+
+input,
+textarea,
+select {
+  /* width: 20ch; */
+  width: 100%;
+}
+
+#project-list-div{
+    background-color: blue;
+}
+
+#item-iscompleted{
+  font-size: 1.5rem;
+  width:2ch;
+  text-align: left;
+}
+
+
+/* For Project List */
+#project-list-div{
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+#project-list-table td{
+    border: 1px solid hsl(0, 0%, 50%);
+    background-color: white;
+    height: 1.5rem;
+    padding-inline: 0.5em;
+}
+
+#project-list-table th{
+  background-color: hsl(0, 0%, 35%);
+  color: white;
+  font-style: bold;
+  height: 2rem;
+  text-align: left;
+  padding-inline-start: 0.5em;
+}
+
+#project-list-table{
+  width: 100%;
+  cursor : cell;
+  user-select : none;
+  border-spacing : 0.05rem;
+}
+
+
+#project-list-table th:hover{
+  cursor:not-allowed;
+}
+
+#project-list-div{
+    background-color: hsl(0, 0%, 80%);
+}

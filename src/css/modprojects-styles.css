@@ -1,0 +1,30 @@
+/* Stylesheet for modprojects.js */
+
+#project-details-div{
+  width: clamp(475px, 80%,550px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+#project-mod{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-inline: auto;
+  gap: 1rem;
+}
+
+#proj-buttons{
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  margin-block-start: 2rem;
+}
+
+@media screen and (width > 1000px) {
+  #project-details {
+    display: block;
+  }
+}

@@ -1,0 +1,102 @@
+/* Stylesheet for todoitemlist.js */
+
+#main-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#item-list-div{
+  align-self: start;
+  justify-self: start;
+  margin-top: 2rem;
+  width: 95%;
+  margin-inline: auto;
+}
+
+option{
+  border: 1px var(--gray-200) solid;
+}
+
+#item-list-table{
+  cursor : cell;
+  user-select : none;
+  border-spacing : 0.05rem;
+}
+
+#item-list-table td{
+    border: 1px solid var(--gray-300);
+    height: 1.5rem;
+}
+
+#item-list-table th{
+  background-color: var(--gray-300);
+  color: white;
+  font-style: bold;
+  height: 2rem;
+  text-align: left;
+  padding-inline-start: 0.5em;
+}
+
+#item-list-table th:hover{
+  cursor:pointer;
+}
+
+#item-list-table td{
+  padding-inline: 0.5em;
+}
+
+#itemlist-buttons{
+  margin-block-start: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+#itemlist-buttons button{
+  width: 15rem;
+  padding-block: 0.5rem;
+  font-style: bold;
+  background-color: var(--gray-500);
+}
+
+#itemlist-buttons button:hover{
+  cursor: pointer;
+  color: var(--red-500);
+}
+
+#item-details-dialog{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background-color: var(--gray-200);
+}
+
+#item-details-dialog  h1{
+  font-family: "Inter",sans-serif;
+}
+
+#item-details-dialog button{
+  font-style: bold;
+  padding: 0.25em 1em;
+  display: block;
+  margin-inline: auto;
+  margin-block: 1rem;
+}
+
+#dialog-item-desc{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#proj-title-dialog{
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+  text-align: right;
+  margin-inline-end: 1em;
+}
