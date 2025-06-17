@@ -72,7 +72,11 @@ class TodoItems{
     }
     //add Participant
     addParticipant(participant){
+        if(isDuplicate(this.#todoParticipants,participant)){
+            return -1;
+        }
         this.#todoParticipants.push(participant);
+        return 0;
     }
     //remove Participant
     removeParticipant(participant){
@@ -87,7 +91,11 @@ class TodoItems{
     }
     //add Checklist items
     addCheckList(checkListItem){
+        if(isDuplicate(this.#todoCheckList,checkListItem)){
+            return -1;
+        }
         this.#todoCheckList.push(checkListItem);
+        return 0;
     }
     //remove Checklist items
     removeCheckList(checkListItem){
