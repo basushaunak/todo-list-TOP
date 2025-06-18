@@ -110,3 +110,42 @@ function getTextColor(r, g, b) {
   return luminance > 128 ? "black" : "white";
 }
 
+
+function readData(str){
+    let inputStr = localStorage.getItem(str);
+    if(!inputStr){
+        return [];
+    }
+    return JSON.parse(inputStr);
+
+}
+
+function writeData(dataName,data){	
+	try {
+    const str = JSON.stringify(data);
+    localStorage.setItem(dataName, data);
+    return true;
+  } catch (e) {
+    return (
+      e instanceof DOMException &&
+      e.name === "QuotaExceededError" &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      localStorage &&
+      localStorage.length !== 0
+    );
+ }
+}
+
+function getProjectId(array,title){
+	for(i=0;i<array.length;i++){
+		if(array[i].projectTitle === title){
+			return array[i].projectId;
+		}
+
+	}
+	let projId = generateId();
+	array.push(new Project(projId,title));
+	return projId;
+}
+
+

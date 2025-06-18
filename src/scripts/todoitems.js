@@ -137,7 +137,7 @@ export class TodoItem{
 			todoDueTime: this.#todoDueTime,
 			todoLocation: this.#todoLocation,
 			todoNotes: this.#todoNotes,
-			todoParticipants = this.#todoParticipants,
+			todoParticipants: this.#todoParticipants,
 			todoCheckList: this.#todoCheckList,
 			todoIsCompleted: this.#todoIsCompleted
 		}
