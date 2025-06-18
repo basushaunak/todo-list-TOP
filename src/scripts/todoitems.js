@@ -126,4 +126,21 @@ export class TodoItem{
     get todoIsCompleted(){
         return this.#todoIsCompleted;
     }
+	toJSON(){
+		return {
+			todoId: this.#todoId,
+			projectId: this.#projectId,
+			todoTitle: this.#todoTitle,
+			todoDescription: this.#todoDescription,
+			todoPriority: this.#todoPriority,
+			todoDueDate: this.#todoDueDate,
+			todoDueTime: this.#todoDueTime,
+			todoLocation: this.#todoLocation,
+			todoNotes: this.#todoNotes,
+			todoParticipants = this.#todoParticipants,
+			todoCheckList: this.#todoCheckList,
+			todoIsCompleted: this.#todoIsCompleted
+		}
+	}
 }
+

@@ -46,3 +46,67 @@ export function showError(errorMsg,element=""){
   }
   element.innerText = errorMsg;
 }
+
+
+function removeTodoItem(todoArray,itemTitle){
+	for(let i = 0; i< todoArray.length;i++){
+		if(todoArray[i].todoTitle === itemTitle){
+			todoArray.splice(i,1);
+			return 0;
+		}
+	}
+	return -1;
+}
+
+
+function removeProject(projectArray, todoArray, title){
+	let idx = 0;
+	let projId = "";
+	for(let i=9;i<projectArray.length;i++){
+		if(projectArray[i].projectTitle === title){
+			idx = i;
+			projId = projectArray[i].projectId;
+			break;
+		}
+	}
+	if(!idx){
+		//'title' was not found in the list of projects
+		return -1;
+	}
+	for(let i=0;i<todoArray.length;i++){
+		if(todoArray[i].projectId === projId){
+			//There are todo items assigned to this project ID, so can not be deleted.
+			return -2;
+		}
+	}
+	projectArray.splice(idx,1);
+	
+}
+
+
+
+
+//get opposite color 
+function getOppositeHSL(h, s, l) {
+  return {
+    h: (h + 180) % 360, 
+    s: s,
+    l: l
+  };
+}
+
+function getOppositeColor(r, g, b) {
+  return {
+    r: 255 - r,
+    g: 255 - g,
+    b: 255 - b
+  };
+}
+
+//for high visibility of text
+
+function getTextColor(r, g, b) {
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+  return luminance > 128 ? "black" : "white";
+}
+

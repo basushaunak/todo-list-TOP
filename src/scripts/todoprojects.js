@@ -3,7 +3,7 @@ class Project{
     #projectTitle;
     #projectDescription;
     #projectColor;
-    constructor(id,title,desc){
+    constructor(id,title,desc=""){
         this.#projectId = id;
         this.#projectTitle = title;
         this.#projectDescription = desc;
@@ -34,4 +34,14 @@ class Project{
     get projectColor(){
         return this.#projectColor;
     }
+	toJSON(){
+		return{
+			projectId:this.#projectId,
+			projectTitle: this.#projectTitle,
+			projectDescription: this.#projectDescription,
+			projectColor: this.#projectColor
+		}
+	}
 }
+
+
