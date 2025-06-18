@@ -2,10 +2,36 @@ class Project{
     #projectId;
     #projectTitle;
     #projectDescription;
+    #projectColor;
     constructor(id,title,desc){
         this.#projectId = id;
         this.#projectTitle = title;
         this.#projectDescription = desc;
+        this.#projectColor = "#ffffff";
     }
-    
+    set projectId(id){
+        //Not allowed.
+        return -1;
+    }
+    get projectId(){
+        return this.#projectId;
+    }
+    set projectTitle(title){
+        this.#projectTitle = title;
+    }
+    get projectTitle(){
+        return this.#projectTitle;
+    }
+    set projectDescription(desc){
+        this.#projectDescription = desc;
+    }
+    get projectDescription(){
+        return this.#projectDescription;
+    }
+    set projectColor(color){
+        this.#projectColor = color;
+    }
+    get projectColor(){
+        return this.#projectColor;
+    }
 }

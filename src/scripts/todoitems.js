@@ -1,4 +1,6 @@
-class TodoItems{
+import {isDuplicate} from "./utils.js";
+
+export class TodoItem{
     #todoId ;
     #projectId ;
     #todoTitle;
@@ -16,8 +18,15 @@ class TodoItems{
         this.#projectId = project;
         this.#todoTitle = title;
     }
+    set todoId(id){
+        //Not allowed
+        return -1;
+    }
     get todoId(){
         return this.#todoId;
+    }
+    set projectId(id){
+        this.#projectId = id;
     }
     get projectId(){
         return this.#projectId;
@@ -35,6 +44,7 @@ class TodoItems{
         return this.#todoDescription;
     }
     set todoPriority(priority){
+        //1 = low, 2 = medium 3 = high 4 = critical
         this.#todoPriority = priority;
     }
     get todoPriority(){
@@ -81,7 +91,11 @@ class TodoItems{
     //remove Participant
     removeParticipant(participant){
         let tmp = this.#todoParticipants.filter(part=>part !== participant);
-        this.#todoParticipants = tmp;
+        if(tmp.length !== this.todoParticipants.length){
+            this.#todoParticipants = tmp;
+            return 0;
+        }
+        return -1;
     }
     set todoCheckList(checkListArray){
         this.#todoCheckList = checkListArray;
@@ -100,7 +114,11 @@ class TodoItems{
     //remove Checklist items
     removeCheckList(checkListItem){
         let tmp = this.#todoCheckList.filter(item => item !== checkListItem);
-        this.#todoCheckList = tmp;
+        if(tmp.length !== this.#todoCheckList.length){
+            this.#todoCheckList = tmp;
+            return 0;
+        }
+        return -1;
     }
     set todoIsCompleted(completed){
         this.#todoIsCompleted = completed;
