@@ -12,7 +12,7 @@ export function generateId() {
   return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
 
-export function titleCase(name) {
+export function properCase(name) {
     if (!name) return "";
     return name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }

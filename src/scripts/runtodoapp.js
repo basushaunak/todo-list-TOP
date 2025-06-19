@@ -97,11 +97,11 @@ export function runTodoApp(){
 					}
 				}
 				break;
-			case: "5":
+			case "5":
 				console.log(JSON.stringify(todoItems));
 				break;
 			case "6":
-				console.log(JSON.stringify((projects));
+				console.log(JSON.stringify(projects));
 				break;
 			default:
 				exitLoop = true;
