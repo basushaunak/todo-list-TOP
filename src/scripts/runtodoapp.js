@@ -1,4 +1,4 @@
-import {isLocalStorageAvailable, showError, generateId, readData, writeData, getProjectId, properCase, properDate, properTime} from "./utils.js";
+import {isLocalStorageAvailable, showError, generateId, readData, writeData, getProjectId, properCase, properDate, properTime, removeProject, removeTodoItem} from "./utils.js";
 import {Project} from "./todoprojects.js";
 import {TodoItem} from "./todoitems.js";
 
@@ -43,18 +43,74 @@ export function runTodoApp(){
     if(projects.length === 0){
             projects.push(new Project(generateId(),"Default","Default Project"));
     }
-    do {
-    if(inputData(projects,todoItems) === -1){
-        showError("Data entry cancelled",div);
-        break;
-    };
-    } while(true);
-    console.log(projects);
-    console.log(todoItems);
-
+	let answer = "";
+	let exitLoop = false;
+	let input;
+	do{
+		answer = prompt("Enter 1: Add Todo items, 2: Add Projects, 3: Remove Todo Items, 4: Remove Projects, 5: List Todo items, 6: List Projects, Any other key: Quit");
+		switch(answer){
+			case "1":
+				do {
+					input = addTodoItem(projects);
+					if(input === -1){
+						showError("Data entry cancelled",div);
+						break;
+					};
+				} while(true);
+				todoItems.push(input);
+				console.log(projects);
+				console.log(todoItems);
+				input="";
+				break;
+			case "2":
+				do {
+					input = addProject(projects);
+					if(input === -1){
+						showError("Data entry cancelled",div);
+						break;
+					};
+				} while(true);
+				projects.push(input);
+				input="";
+				console.log(projects);
+				console.log(todoItems);
+				break;
+			case "3":
+				input = prompt("Enter Todo entry to remove");
+				rtnValue = 0;
+				if(input){
+					rtnValue = removeTodoItem(todoItems,input);
+				}
+				if(rtnValue === -1){
+					showError("Unable to delete",div);
+				}
+				break;
+			case "4":
+				input = prompt("Enter Project to remove");
+				rtnValue = 0;
+				if(input){
+					rtnValue = removeProject(projects,todoItems,input);
+					if(rtnValue === -1){
+						showError(`"${input}" not found or already deleted.`,div);
+					}else if(rtnValue === -2){
+						showError(`"${input}" can not be deleted, tasks exists under it.`,div);
+					}
+				}
+				break;
+			case: "5":
+				console.log(JSON.stringify(todoItems));
+				break;
+			case "6":
+				console.log(JSON.stringify((projects));
+				break;
+			default:
+				exitLoop = true;
+				break;
+		}
+	} while(!exitLoop)
 }
 
-function inputData(projects){
+function addTodoItem(projects){
     let taskTitle = prompt("Enter Task Name");
     if(!taskTitle){
         return -1;
@@ -127,5 +183,25 @@ function inputData(projects){
     inputData.todoParticipants = taskParticipants;
     inputData.todoCheckList = taskCheckList;
     inputData.todoIsCompleted = false;
+	return inputData;
 }
 
+function addProject(projects){
+	let projectTitle = prompt("Enter Project Name");
+	if(projectTitle === null){
+		return -1;
+	}
+	let projectDesc = prompt("Enter Description");
+	if(projectDesc === null){
+		return -1;
+	}
+	for(let i = 0; i < projects.length;i++){
+		if(projects[i].projectTitle = projectTitle){
+			showError("Duplicate Project Name/Title");
+			return -2;
+		}
+	}
+	let input = new Project(generateId(),projectTitle)
+	input.projectDescription = projectDesc;
+	return input;
+}
