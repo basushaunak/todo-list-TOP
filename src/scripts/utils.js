@@ -12,7 +12,7 @@ export function generateId() {
   return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
 
-export function capitalizeName(name) {
+export function titleCase(name) {
     if (!name) return "";
     return name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
@@ -48,7 +48,7 @@ export function showError(errorMsg,element=""){
 }
 
 
-function removeTodoItem(todoArray,itemTitle){
+export function removeTodoItem(todoArray,itemTitle){
 	for(let i = 0; i< todoArray.length;i++){
 		if(todoArray[i].todoTitle === itemTitle){
 			todoArray.splice(i,1);
@@ -59,7 +59,7 @@ function removeTodoItem(todoArray,itemTitle){
 }
 
 
-function removeProject(projectArray, todoArray, title){
+export function removeProject(projectArray, todoArray, title){
 	let idx = 0;
 	let projId = "";
 	for(let i=9;i<projectArray.length;i++){
@@ -87,7 +87,7 @@ function removeProject(projectArray, todoArray, title){
 
 
 //get opposite color 
-function getOppositeHSL(h, s, l) {
+export function getOppositeHSL(h, s, l) {
   return {
     h: (h + 180) % 360, 
     s: s,
@@ -95,7 +95,7 @@ function getOppositeHSL(h, s, l) {
   };
 }
 
-function getOppositeColor(r, g, b) {
+export function getOppositeColor(r, g, b) {
   return {
     r: 255 - r,
     g: 255 - g,
@@ -111,16 +111,15 @@ function getTextColor(r, g, b) {
 }
 
 
-function readData(str){
-    let inputStr = localStorage.getItem(str);
+export function readData(dataName){
+    let inputStr = localStorage.getItem(dataName);
     if(!inputStr){
         return [];
     }
     return JSON.parse(inputStr);
-
 }
 
-function writeData(dataName,data){	
+export function writeData(dataName,data){	
 	try {
     const str = JSON.stringify(data);
     localStorage.setItem(dataName, data);
@@ -136,16 +135,45 @@ function writeData(dataName,data){
  }
 }
 
-function getProjectId(array,title){
+export function getProjectId(array,title){
 	for(i=0;i<array.length;i++){
 		if(array[i].projectTitle === title){
 			return array[i].projectId;
 		}
-
 	}
 	let projId = generateId();
 	array.push(new Project(projId,title));
 	return projId;
 }
 
+export function properDate(str){
+  // Split the date string into day, month, and year components
+    const parts = dateString.split('/');
+    const day = parseInt(parts[0], 10);
+    // Month is 0-indexed in JavaScript Date objects (January is 0, December is 11)
+    const month = parseInt(parts[1], 10) - 1; 
+    const year = parseInt(parts[2], 10);
 
+    // Create a new Date object
+    // Note: The order for Date constructor is year, month, day
+    return new Date(year, month, day);
+}
+
+export function properTime(str){
+    // Split the string into hours and minutes
+    const [hours, minutes] = timeString.split(':').map(Number);
+
+    // Create a new Date object.
+    // You can choose to use the current date or a specific base date.
+    // For time-only conversion, the date part doesn't usually matter unless
+    // you need to perform date-specific calculations later.
+    const date = new Date(); 
+
+    // Set the hours and minutes of the Date object
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    date.setSeconds(0); // Set seconds to 0 to ensure consistency
+    date.setMilliseconds(0); // Set milliseconds to 0
+
+    return date;
+}
