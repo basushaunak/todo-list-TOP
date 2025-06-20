@@ -1,8 +1,52 @@
+*, *::before, *::after{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+
 :root{
 --gray-100: #e4e4e4;
---gray-200: #b2b2b2
---gray-500: #828282
---gray-600: #555555
---gray-700: #2c2c2c
---pure-black: #000000
+--gray-200: #b2b2b2;
+--gray-500: #828282;
+--gray-600: #555555;
+--gray-700: #2c2c2c;
+--pure-black: #000000;
+--pure-white: #ffffff;
+--font-family: "Roboto",sans-serif;
+}
+
+html{
+background-color: var(--gray-100);
+color: var(--pure-black);
+font-size: 1.5rem;
+line-height: 1.2em;
+font-family: var(--font-family);
+}
+
+h1{
+	font-family: "Algerian","Script","Roboto",sans-serif;
+	line-height: 1.1em;
+}
+
+.wrapper{
+width: clamp(450px,80%,1440px);
+background-color: var(--gray-200);
+border: 2px var(--pure-black) solid;
+margin-inline: auto;
+margin-block-start: 2rem;
+}
+
+#heading, #status-message{
+background-color: var(--gray-700);
+color: white;
+}
+
+#heading{
+max-width: fit-content;
+margin-inline: auto;
+border: 1px var(--pure-black) solid;
+}
+/*Appears at the bottom to show status / error messages"
+#status-message{
+	font-size: 1rem;
 }
