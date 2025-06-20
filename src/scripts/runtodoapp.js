@@ -206,7 +206,7 @@ function addProject(projects){
 		return -1;
 	}
 	for(let i = 0; i < projects.length;i++){
-		if(projects[i].projectTitle = projectTitle){
+		if(projects[i].projectTitle === projectTitle){
 			return -2;
 		}
 	}

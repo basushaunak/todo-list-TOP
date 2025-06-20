@@ -14,7 +14,6 @@ module.exports = {
   devServer: {
     watchFiles: ["./src/template.html"],
     port:8000,
-    open:true,
   },
   plugins: [
     new HtmlWebpackPlugin({
