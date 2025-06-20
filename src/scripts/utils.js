@@ -146,6 +146,7 @@ export function getProjectId(array,title){
 }
 
 export function properDate(str){
+    return str;
   // Split the date string into day, month, and year components
     const parts = dateString.split('/');
     const day = parseInt(parts[0], 10);
@@ -159,6 +160,7 @@ export function properDate(str){
 }
 
 export function properTime(str){
+    return str;
     // Split the string into hours and minutes
     const [hours, minutes] = timeString.split(':').map(Number);
 

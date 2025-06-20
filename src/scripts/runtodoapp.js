@@ -56,6 +56,10 @@ export function runTodoApp(){
 						showError("Data entry cancelled",div);
 						break;
 					};
+                    if(input === -2){
+                        showError("Duplicate Project Name/Title");
+                        continue;
+                    }
                     todoItems.push(input);
                     input="";
 				} while(true);
@@ -70,6 +74,10 @@ export function runTodoApp(){
 						showError("Data entry cancelled",div);
 						break;
 					};
+                    if(input === -2){
+                        showError("Duplicate Project Name/Title");
+                        continue;
+                    }
                     projects.push(input);
                     input="";
 				} while(true);
@@ -125,7 +133,7 @@ function addTodoItem(projects){
     if(!projTitle){
         projTitle = "Default";
     }
-    projId = getProjectId(projects,properCase(projTitle));
+    projId = getProjectId(projects,projTitle);
     let taskDesc = prompt("Enter Project Description");
     let taskPriority = prompt("Enter Task Priority (Low, Normal, High)");
     if(taskPriority === null){
@@ -146,7 +154,7 @@ function addTodoItem(projects){
     if(taskLocation === null){
         return -1;
     }
-    taskLocation = properCase(taskLocation);
+    taskLocation = taskLocation;
     let taskNotes = prompt("Enter notes if any");
     if(taskNotes === null){
         return -1;
@@ -178,14 +186,14 @@ function addTodoItem(projects){
     let inputItem = new TodoItem(generateId(),projId,taskTitle);
     inputItem.todoDescription = taskDesc;
     inputItem.todoPriority = taskPriority;
-    inputData.todoDueDate = taskDueDate;
-    inputData.todoDueTime = taskDueTime;
-    inputData.todoLocation = taskLocation;
-    inputData.todoNotes = taskNotes;
-    inputData.todoParticipants = taskParticipants;
-    inputData.todoCheckList = taskCheckList;
-    inputData.todoIsCompleted = false;
-	return inputData;
+    inputItem.todoDueDate = taskDueDate;
+    inputItem.todoDueTime = taskDueTime;
+    inputItem.todoLocation = taskLocation;
+    inputItem.todoNotes = taskNotes;
+    inputItem.todoParticipants = taskParticipants;
+    inputItem.todoCheckList = taskCheckList;
+    inputItem.todoIsCompleted = false;
+	return inputItem;
 }
 
 function addProject(projects){
@@ -199,7 +207,6 @@ function addProject(projects){
 	}
 	for(let i = 0; i < projects.length;i++){
 		if(projects[i].projectTitle = projectTitle){
-			showError("Duplicate Project Name/Title");
 			return -2;
 		}
 	}
