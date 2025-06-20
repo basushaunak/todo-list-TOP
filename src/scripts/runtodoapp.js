@@ -56,9 +56,10 @@ export function runTodoApp(){
 						showError("Data entry cancelled",div);
 						break;
 					};
+                    todoItems.push(input);
+                    input="";
 				} while(true);
-				todoItems.push(input);
-				console.log(projects);
+                console.log(projects);
 				console.log(todoItems);
 				input="";
 				break;
@@ -69,8 +70,9 @@ export function runTodoApp(){
 						showError("Data entry cancelled",div);
 						break;
 					};
+                    projects.push(input);
+                    input="";
 				} while(true);
-				projects.push(input);
 				input="";
 				console.log(projects);
 				console.log(todoItems);
@@ -188,7 +190,7 @@ function addTodoItem(projects){
 
 function addProject(projects){
 	let projectTitle = prompt("Enter Project Name");
-	if(projectTitle === null){
+	if(!projectTitle){
 		return -1;
 	}
 	let projectDesc = prompt("Enter Description");

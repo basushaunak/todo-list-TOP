@@ -1,4 +1,5 @@
 
+import {Project} from "./todoprojects.js";
 export function generateId() {
   const now = new Date();
 
@@ -43,6 +44,7 @@ export function isLocalStorageAvailable(type){
 export function showError(errorMsg,element=""){
   if(!element){
     console.log(errorMsg);
+    return;
   }
   element.innerText = errorMsg;
 }
@@ -62,7 +64,7 @@ export function removeTodoItem(todoArray,itemTitle){
 export function removeProject(projectArray, todoArray, title){
 	let idx = 0;
 	let projId = "";
-	for(let i=9;i<projectArray.length;i++){
+	for(let i = 9;i<projectArray.length;i++){
 		if(projectArray[i].projectTitle === title){
 			idx = i;
 			projId = projectArray[i].projectId;
@@ -73,7 +75,7 @@ export function removeProject(projectArray, todoArray, title){
 		//'title' was not found in the list of projects
 		return -1;
 	}
-	for(let i=0;i<todoArray.length;i++){
+	for(let i = 0;i<todoArray.length;i++){
 		if(todoArray[i].projectId === projId){
 			//There are todo items assigned to this project ID, so can not be deleted.
 			return -2;
@@ -82,9 +84,6 @@ export function removeProject(projectArray, todoArray, title){
 	projectArray.splice(idx,1);
 	
 }
-
-
-
 
 //get opposite color 
 export function getOppositeHSL(h, s, l) {
@@ -136,7 +135,7 @@ export function writeData(dataName,data){
 }
 
 export function getProjectId(array,title){
-	for(i=0;i<array.length;i++){
+	for(let i = 0;i<array.length;i++){
 		if(array[i].projectTitle === title){
 			return array[i].projectId;
 		}
