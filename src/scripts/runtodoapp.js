@@ -8,7 +8,7 @@ export function runTodoApp(){
     let item={};
     const projects=[];
     const todoItems=[];
-    const div = "";
+    const div = document.querySelector("#status-message");
 
     if(!isLocalStorageAvailable("localStorage")){
         showError("Local Storage is not available, data will not be saved!!!",div);
