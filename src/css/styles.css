@@ -1,18 +1,11 @@
 @font-face {
-    font-family: "Roboto";
-    src: url("../assets/fonts/roboto-variablefont_wdthwght-webfont.woff2") format("woff2"),
-         url("../assets/fonts/roboto-variablefont_wdthwght-webfont.woff") format("woff");
+    font-family: "Inter";
+    src: url("../assets/fonts/inter.woff2") format("woff2"),
+         url("../assets/fonts/inter.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Roboto";
-    font-style: italic;
-    src: url("../assets/fonts/roboto-italic-variablefont_wdthwght-webfont.woff2") format("woff2"),
-         url("../assets/fonts/roboto-italic-variablefont_wdthwght-webfont.woff") format("woff");
-}
-
-@font-face {
-	font-family: Script;
+	font-family: "Script";
 	font-style: normal;
 	font-weight: 400;
 	font-stretch: 100%;
@@ -35,7 +28,7 @@
 	--pure-black: #000000;
 	--pure-white: #ffffff;
 	--red-500: hsl(39, 77%, 73%);
-	--font-family: "Roboto",sans-serif;
+	--font-family: "Inter",sans-serif;
 }
 
 html{
@@ -73,7 +66,7 @@ button:hover{
 }
 
 h1{
-		font-family: "Algerian","Script","Roboto",sans-serif;
+		font-family: "Script","Inter",sans-serif;
 		line-height: 1.1em;
 		text-align: center;
 }
