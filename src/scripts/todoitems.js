@@ -20,7 +20,7 @@ export class TodoItem {
   }
   set todoId(id) {
     //Not allowed
-    return -1;
+
   }
   get todoId() {
     return this.#todoId;
@@ -66,7 +66,7 @@ export class TodoItem {
     this.#todoLocation = location;
   }
   get todoLocation() {
-    this.#todoLocation;
+    return this.#todoLocation;
   }
   set todoNotes(notes) {
     this.#todoNotes = notes;

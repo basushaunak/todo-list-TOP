@@ -198,7 +198,7 @@ h1:hover {
   height: calc(100vh - 3rem);
 }
 
-#item-details {
+#main-content {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
 }

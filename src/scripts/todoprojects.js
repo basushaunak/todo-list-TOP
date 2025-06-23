@@ -11,7 +11,6 @@ export class Project {
   }
   set projectId(id) {
     //Not allowed.
-    return -1;
   }
   get projectId() {
     return this.#projectId;
