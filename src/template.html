@@ -41,76 +41,27 @@
           <div id="details">
             <div id="heading">Heading</div>
             <div id="main-content">
-              <div id="input-details">
-                <p>Title:</p>
-                <input
-                  type="text"
-                  id="item-title"
-                  title="Enter 'to-do' title/name"
-                />
-                <p>Project:</p>
-                <input
-                  type="text"
-                  id="item-project"
-                  title="Enter Project Name"
-                />
-                <p>Description:</p>
-                <input
-                  type="text"
-                  id="item-description"
-                  title="Enter description of todo item"
-                />
-                <p>Priority(Low,Normal,High):</p>
-                <select id="item-priority">
-                  <option value="low">Low</option>
-                  <option value="normal" selected>Normal</option>
-                  <option value="high">High</option>
-                </select>
-                <p>Due Date:</p>
-                <input
-                  type="date"
-                  id="item-due-date"
-                  title="Enter Due by date"
-                />
-                <p>Due Time:</p>
-                <input
-                  type="time"
-                  id="item-due-time"
-                  title="Enter Due by time"
-                />
-                <p>Location:</p>
-                <input
-                  type="text"
-                  id="item-location"
-                  title="Enter location of task, if applicable"
-                />
-                <p>Notes:</p>
-                <textarea
-                  id="item-notes"
-                  title="Enter notes, if any"
-                ></textarea>
-                <p>Participants (Comma Separated):</p>
-                <textarea
-                  id="item-participants"
-                  title="Enter list of participants, if any"
-                ></textarea>
-                <p>Checklist (Comma Separated):</p>
-                <textarea
-                  id="item-checklist"
-                  title="Enter checklist, if any"
-                ></textarea>
-                <div id="buttons">
-                  <button type="button">Save</button>
-                  <button type="button">Reset</button>
-                  <button type="button">Close</button>
+              <div id="project-mod">
+                <div id="project-details-div">
+                  <p>Project Name (Title):</p><input type="text" id="project-title" title="Enter Project Name">
+                  <p>Project Description:</p><textarea id="project-desc" title="Enter a description (optional)"></textarea>
+                  <p>Choose a Color:</p><input type="color" id="project-color" value="#ffffff">
+                  <div id="proj-buttons">
+                    <button type="button" id="btn-ssave">Save</button>
+                    <button type="button" id="btn-delete">Delete</button>
+                    <button type="button" id="btn-cancel">Cancel</button>
+                  </div>
+                </div>
+                <div id="project-list-div">
+                   <select multiple ="project-list" id="project-list">
+                      <option value="0">Lorem, ipsum do: consectetur sit amet consectetur</option>
+                      <option value="1">Lorem, ipsum do: consectetur sit amet consectetur</option>
+                      <option value="2">Lorem, ipsum do: consectetur sit amet consectetur</option>
+                   </select>
+                  </table> 
                 </div>
               </div>
-              <div id="buffer">Buffer</div>
-              <div id="project-details">
-                <p>Project Details</p>
-              </div>
             </div>
-
             <div id="status-message-div">
               <p id="status-message">Status Message</p>
             </div>

@@ -79,7 +79,9 @@ button:hover {
 
 h1 {
   font-family: "Script", "Inter", sans-serif;
-  line-height: 1.1em;
+  font-weight: bold;
+  line-height: 1.2em;
+  margin-block:0.25rem;
   text-align: center;
 }
 
@@ -102,7 +104,7 @@ h1:hover {
 .wrapper {
   width: clamp(450px, 80%, 1440px);
   background-color: var(--gray-200);
-  border: 2px var(--pure-black) solid;
+  /* border: 2px var(--pure-black) solid; */
   margin-inline: auto;
   /* margin-block-start: 2rem; */
 }
@@ -148,7 +150,7 @@ h1:hover {
 }
 
 #heading {
-  border: 1px var(--pure-black) solid;
+  /* border: 1px var(--pure-black) solid; */
   text-align: center;
   font-size: 1.5rem;
   display: flex;
@@ -157,12 +159,12 @@ h1:hover {
 
 #buffer {
   display: none;
-  border: 2px black solid;
+  /* border: 2px black solid; */
 }
 
 #project-details {
   display: none;
-  border: 2px black solid;
+  /* border: 2px black solid; */
 }
 
 #projects {
@@ -198,10 +200,10 @@ h1:hover {
   height: calc(100vh - 3rem);
 }
 
-#main-content {
+/* #main-content {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-}
+} */
 
 #input-details {
   display: grid;
@@ -234,4 +236,49 @@ h1:hover {
   #content {
     grid-template-columns: 1fr 5fr;
   }
+}
+
+#main-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#project-details-div{
+  width: clamp(475px, 80%,550px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+#project-mod{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-inline: auto;
+  /* border: 2px black solid; */
+  gap: 1rem;
+}
+/* #project-mod > *{
+  border: 1px red solid;
+} */
+
+#proj-buttons{
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+#project-list-div{
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+#project-list{
+  width: 100%;
+}
+
+option{
+  border: 1px var(--gray-500) solid;
 }
