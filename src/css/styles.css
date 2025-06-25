@@ -75,6 +75,7 @@ p {
 
 button:hover {
   cursor: pointer;
+  color: var(--red-500);
 }
 
 h1 {
@@ -145,10 +146,18 @@ h1:hover {
   background-color: var(--gray-600);
   color: var(--pure-white);
   font-size: 1rem;
-  margin-block: 0.25rem;
+  margin-block: 1rem;
   width: 13ch;
 }
 
+#btn-date-go{
+    padding:0.25rem;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-inline-start: 0.25rem;
+    background-color: var(--gray-200);
+    color: var(--pure-black);
+}
 #heading {
   /* border: 1px var(--pure-black) solid; */
   text-align: center;
@@ -169,6 +178,16 @@ h1:hover {
 
 #projects {
   margin-block-start: 2rem;
+}
+
+#projects p:not(.sidebar-heading), #tasks p:not(.sidebar-heading){
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+#projects p:hover, #tasks p:hover{
+  cursor: pointer;
+  color: var(--red-500);
 }
 
 /*Appears at the bottom to show status / error messages"*/
@@ -267,6 +286,7 @@ h1:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+  margin-block-start: 2rem;
 }
 
 #project-list-div{
@@ -280,5 +300,21 @@ h1:hover {
 }
 
 option{
-  border: 1px var(--gray-500) solid;
+  border: 1px var(--gray-200) solid;
+}
+
+/* #proj-buttons > button{
+  padding: 0.25em 0.5em;
+
+} */
+
+#item-list-div{
+  align-self: start;
+  justify-self: start;
+  margin-top: 2rem;
+  width: 95%;
+  margin-inline: auto;
+}
+#item-list{
+  width: 100%;
 }

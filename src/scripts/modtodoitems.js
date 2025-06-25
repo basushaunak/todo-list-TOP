@@ -1,4 +1,4 @@
-export function addTodoItems(){
+export function modTodoItems(){
     const mainContent = document.querySelector("#main-content");
     let htmlString = `<div id="input-details">
                 <p>Title:</p>

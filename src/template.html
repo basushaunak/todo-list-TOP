@@ -21,14 +21,18 @@
             <div id="user-id-div">
               <p id="user-id">@basushaunak</p>
             </div>
-            <div id="time">
+            <div id="tasks">
               <p class="sidebar-heading">Tasks</p>
-              <p>New Task...</p>
-              <p>Today</p>
-              <p>This Week</p>
-              <p>Next Week</p>
-              <p>Next Month</p>
-              <input type="date" id="filter-date" />
+              <p id="txt-task-new">New Task...</p>
+              <p id="txt-task-today">Today</p>
+              <p id="txt-task-thisweek">This Week</p>
+              <p id="txt-task-thismonth">This Week</p>
+              <p id="txt-task-nextweek">Next Week</p>
+              <p id="txt-task-nextmonth">Next Month</p>
+              <div>
+                <input type="date" id="filter-date" />
+                <button type="button" id="btn-date-go">Go!</button>
+              </div>
             </div>
             <div id="projects">
               <p class="sidebar-heading">Projects</p>
@@ -40,30 +44,10 @@
           </div>
           <div id="details">
             <div id="heading">Heading</div>
-            <div id="main-content">
-              <div id="project-mod">
-                <div id="project-details-div">
-                  <p>Project Name (Title):</p><input type="text" id="project-title" title="Enter Project Name">
-                  <p>Project Description:</p><textarea id="project-desc" title="Enter a description (optional)"></textarea>
-                  <p>Choose a Color:</p><input type="color" id="project-color" value="#ffffff">
-                  <div id="proj-buttons">
-                    <button type="button" id="btn-ssave">Save</button>
-                    <button type="button" id="btn-delete">Delete</button>
-                    <button type="button" id="btn-cancel">Cancel</button>
-                  </div>
-                </div>
-                <div id="project-list-div">
-                   <select multiple ="project-list" id="project-list">
-                      <option value="0">Lorem, ipsum do: consectetur sit amet consectetur</option>
-                      <option value="1">Lorem, ipsum do: consectetur sit amet consectetur</option>
-                      <option value="2">Lorem, ipsum do: consectetur sit amet consectetur</option>
-                   </select>
-                  </table> 
-                </div>
+              <div id="main-content">
               </div>
-            </div>
             <div id="status-message-div">
-              <p id="status-message">Status Message</p>
+              <p id="status-message">Status Message/ Error Message</p>
             </div>
           </div>
         </div>
