@@ -21,6 +21,16 @@ export function properCase(name) {
     .join(" ");
 }
 
+export function setPadding(str, len = str.length, char = " "){
+  if (str.length === len){
+    return str;
+  }
+  if (str.length > len){
+    return str.slice(0,len);
+  }
+  return str.padEnd(len,char);
+}
+
 export function isDuplicate(array, item) {
   return array.includes(item);
 }
@@ -85,6 +95,8 @@ export function removeProject(projectArray, todoArray, title) {
   projectArray.splice(idx, 1);
 }
 
+
+
 //get opposite color
 export function getOppositeHSL(h, s, l) {
   return {
@@ -94,17 +106,24 @@ export function getOppositeHSL(h, s, l) {
   };
 }
 
-export function getOppositeColor(r, g, b) {
-  return {
-    r: 255 - r,
-    g: 255 - g,
-    b: 255 - b,
-  };
+export function hexToRgb(hex) {
+        const r = parseInt(hex.substring(1, 3), 16);
+        const g = parseInt(hex.substring(3, 5), 16);
+        const b = parseInt(hex.substring(5, 7), 16);
+        return { r, g, b };
+}
+
+
+export function getOppositeColorRGB(rgb) {
+  let r = 255 - rgb.r;
+  let g = 255 - rgb.g;
+  let b = 255 - rgb.b;
+  return `rgb(${r},${g},${b})`;
 }
 
 //for high visibility of text
 
-function getTextColor(r, g, b) {
+export function getTextColor(r, g, b) {
   const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
   return luminance > 128 ? "black" : "white";
 }

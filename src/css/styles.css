@@ -27,13 +27,13 @@
 }
 
 :root {
-  --gray-100: #e4e4e4;
-  --gray-200: #b2b2b2;
-  --gray-500: #828282;
-  --gray-600: #555555;
-  --gray-700: #2c2c2c;
+  --gray-100: hsl(0, 0%, 89%);
+  --gray-200: hsl(0, 0%, 70%);
+  --gray-500: hsl(0, 0%, 51%);
+  --gray-600: hsl(0, 0%, 33%);
+  --gray-700: hsl(0, 0%, 17%);
   --pure-black: #000000;
-  --pure-white: #ffffff;
+  --pure-white: hsl(0, 0%, 100%);
   --red-500: hsl(39, 77%, 73%);
   --font-family: "Inter", sans-serif;
 }
