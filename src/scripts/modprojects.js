@@ -19,5 +19,4 @@ export function modProjects(){
                     </div>
                 </div>`;
     mainContent.innerHTML = str;
-
 }

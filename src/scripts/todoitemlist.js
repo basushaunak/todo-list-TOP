@@ -28,7 +28,7 @@ export function todoItemList(items,projects,filtered = true){
       }
     }
     tempStr = `<option id = "${items[i].todoId}" name = "${items[i].todoId}">`;
-    // tempStr = `<option id = "${items[i].todoId}" name = "${items[i].todoId}" style="background-color: ${tmpBGColor}; color: ${tmpFGColor}">`;
+    //tempStr = `<option id = "${items[i].todoId}" name = "${items[i].todoId}" style="background-color: ${tmpBGColor}; color: ${tmpFGColor}">`;
     tempStr += `: ${items[i].todoDueDate}`;
     tempStr += setPadding(items[i].todoTitle,20," ");
     tempStr += `: ${setPadding(projTitle,15," ")}`;

@@ -171,37 +171,3 @@ export function getProjectId(array, title) {
   array.push(new Project(projId, title));
   return projId;
 }
-
-export function properDate(str) {
-  return str;
-  // Split the date string into day, month, and year components
-  // const parts = dateString.split("/");
-  // const day = parseInt(parts[0], 10);
-  // // Month is 0-indexed in JavaScript Date objects (January is 0, December is 11)
-  // const month = parseInt(parts[1], 10) - 1;
-  // const year = parseInt(parts[2], 10);
-
-  // // Create a new Date object
-  // // Note: The order for Date constructor is year, month, day
-  // return new Date(year, month, day);
-}
-
-export function properTime(str) {
-  return str;
-  // Split the string into hours and minutes
-  // const [hours, minutes] = timeString.split(":").map(Number);
-
-  // // Create a new Date object.
-  // // You can choose to use the current date or a specific base date.
-  // // For time-only conversion, the date part doesn't usually matter unless
-  // // you need to perform date-specific calculations later.
-  // const date = new Date();
-
-  // // Set the hours and minutes of the Date object
-  // date.setHours(hours);
-  // date.setMinutes(minutes);
-  // date.setSeconds(0); // Set seconds to 0 to ensure consistency
-  // date.setMilliseconds(0); // Set milliseconds to 0
-
-  // return date;
-}

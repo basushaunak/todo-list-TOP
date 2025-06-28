@@ -10,7 +10,7 @@ export class Project {
     this.#projectColor = "#ffffff";
   }
   set projectId(id) {
-    //Not allowed.
+    //Cant be changed
   }
   get projectId() {
     return this.#projectId;

@@ -65,8 +65,6 @@ export function runTodoApp() {
           break;
         }
     }
-    // todoItemList(todoItems,projects);
-    // showError("You Clicked: "+e.target.id,msgDiv)
   });
   menuProjects.addEventListener("click",(e)=>{showError("You Clicked: "+e.target.id,msgDiv)});
 
@@ -76,10 +74,6 @@ export function runTodoApp() {
     projData = readData("projects");
     todoData = readData("todoItems");
     for (let i = 0; i < projData.length; i++) {
-      // #projectId;
-      // #projectTitle;
-      // #projectDescription;
-      // #projectColor;
       item = new Project(
         projData[i].projectId,
         projData[i].projectTitle,

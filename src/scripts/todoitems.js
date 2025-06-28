@@ -19,7 +19,7 @@ export class TodoItem {
     this.#todoTitle = title;
   }
   set todoId(id) {
-    //Not allowed
+    // Can't be changed
 
   }
   get todoId() {

@@ -87,7 +87,6 @@ export function modTodoItems(items,projects,itemId=""){
     document.querySelector("#btn-close").addEventListener("click",()=>{
       alert("Clicked Close");
     });
-
 }
 
 function initForm(items,projects,itemId){

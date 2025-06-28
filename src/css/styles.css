@@ -308,11 +308,6 @@ option{
   border: 1px var(--gray-200) solid;
 }
 
-/* #proj-buttons > button{
-  padding: 0.25em 0.5em;
-
-} */
-
 #item-list-div{
   align-self: start;
   justify-self: start;
