@@ -71,6 +71,7 @@ button {
 p {
   margin-inline-start: 1rem;
   line-height: 1.2em;
+  margin-block: 0.25rem;
 }
 
 button:hover {
@@ -204,7 +205,7 @@ h1:hover {
 #side-bar {
   background-color: var(--gray-600);
   color: var(--pure-white);
-  display: none;
+  display: block;
 }
 
 .sidebar-heading {
@@ -245,6 +246,9 @@ h1:hover {
 @media screen and (width > 1000px) {
   #side-bar {
     display: block;
+    background-color: var(--gray-600);
+    color: var(--pure-white);
+    /* display: none; */
   }
   #buffer {
     display: block;
@@ -256,6 +260,7 @@ h1:hover {
     grid-template-columns: 1fr 5fr;
   }
 }
+
 
 #main-content{
   display: flex;

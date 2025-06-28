@@ -152,6 +152,15 @@ export function writeData(dataName, data) {
   }
 }
 
+export function removeData(dataName){
+  try {
+    localStorage.removeItem(dataName);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function getProjectId(array, title) {
   for (let i = 0; i < array.length; i++) {
     if (array[i].projectTitle === title) {
