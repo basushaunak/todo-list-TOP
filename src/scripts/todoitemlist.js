@@ -5,11 +5,9 @@ export function todoItemList(items,projects,filtered = true){
   const mainContent = document.querySelector("#main-content");
   document.querySelector("#heading").innerText = "List of TODO Items";
   mainContent.innerHTML = `<div id="item-list-div">
-                            <select multiple id="item-list">
-                            </select>
                           </div>`;
-  const itemList = document.querySelector("#item-list");
-  let optionItem ;
+  const itemList = document.querySelector("#item-list-div");
+  let itemRow ;
   if(items.length === 0){
     // mainContent.innerHTML = "";
     document.querySelector("#item-list-div").style.display = "none";
@@ -20,8 +18,11 @@ export function todoItemList(items,projects,filtered = true){
   let tmpBGColor;
   let tmpFGColor;
   let projTitle;
+  itemList.addEventListener("dblclick",(e)=>{
+    alert(e.target.id);
+  })
   for(let i = 0;i<items.length;i++){
-    optionItem = document.createElement("option");
+    itemRow = document.createElement("p");
     for(let j=0;j<projects.length;j++){
       if(projects[j].projectId === items[i].projectId){
         projTitle = setPadding(projects[j].projectTitle,15," ");
@@ -30,19 +31,23 @@ export function todoItemList(items,projects,filtered = true){
         break;
       }
     }
-    optionItem.id = `T${items[i].todoId}`;
-    optionItem.name = `T${items[i].todoId}`;
+    itemRow.id = `T${items[i].todoId}`;
+    // optionItem.name = `T${items[i].todoId}`;
     tempStr = ``;
     tempStr += `${items[i].todoDueDate}: `;
     tempStr += setPadding(items[i].todoTitle,20," ");
     tempStr += `: ${setPadding(projTitle,15," ")}`;
     tempStr += `: ${setPadding(items[i].todoDescription,30," ")}`;
     console.log(tempStr);
-    optionItem.value = tempStr;
-    optionItem.innerText = tempStr;
-    optionItem.style.color = tmpFGColor;
-    optionItem.style.backgroundColor = tmpBGColor;
-    itemList.appendChild(optionItem);
+    itemRow.style.whiteSpace = "pre";
+    itemRow.style.color = tmpFGColor;
+    itemRow.style.backgroundColor = tmpBGColor;
+    itemRow.style.userSelect = "none";
+    itemRow.style.cursor = "cell";
+    itemRow.style.width = "100%";
+    itemRow.title = "Double Click to Edit";
+    itemRow.textContent = tempStr;
+    itemList.appendChild(itemRow);
   }
   console.log(projects);
   console.log(items);

@@ -177,25 +177,27 @@ h1:hover {
   /* border: 2px black solid; */
 }
 
-#projects {
+#projects-div {
   margin-block-start: 2rem;
 }
 
-#projects p:not(.sidebar-heading), #tasks p:not(.sidebar-heading){
+#projects-div p:not(.sidebar-heading), #tasks-div p:not(.sidebar-heading){
   font-style: italic;
   font-size: 0.75rem;
 }
 
-#projects p:hover, #tasks p:hover{
+#projects-div p:hover, #tasks-div p:hover{
   cursor: pointer;
   color: var(--red-500);
 }
 
 /*Appears at the bottom to show status / error messages"*/
 #status-message {
-  font-size: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.2rem;
   text-align: center;
   color: var(--red-500);
+  margin-inline-start: 0px;
 }
 
 #content {
@@ -266,6 +268,7 @@ h1:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 #project-details-div{
   width: clamp(475px, 80%,550px);
@@ -314,7 +317,5 @@ option{
   margin-top: 2rem;
   width: 95%;
   margin-inline: auto;
-}
-#item-list{
-  width: 100%;
+  /* background-color: red; */
 }

@@ -23,8 +23,8 @@ export function runTodoApp() {
   const projects = [];
   const todoItems = [];
   const msgDiv = document.querySelector("#status-message");
-  const menuTasks = document.querySelector("#tasks");
-  const menuProjects = document.querySelector("#projects");
+  const menuTasks = document.querySelector("#tasks-div");
+  const menuProjects = document.querySelector("#projects-div");
   menuTasks.addEventListener("click",(e)=>{
     switch (e.target.id){
       case "txt-all-tasks":

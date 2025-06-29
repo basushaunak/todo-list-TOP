@@ -159,7 +159,11 @@ function saveItem(items,projects){
   let projId = getProjectId(projects, document.querySelector("#item-project").value);
   let item = new TodoItem(generateId(),projId,document.querySelector("#item-title").value);
   item.todoDescription = document.querySelector("#item-description").value;
-  item.todoPriority = document.querySelector("#item-priority").value;
+  if(document.querySelector("#item-priority").value){
+    item.todoPriority = document.querySelector("#item-priority").value;
+  }else{
+    item.todoPriority = "Normal";
+  }  
   item.todoDueDate = document.querySelector("#item-due-date").value;
   item.todoDueTime = document.querySelector("#item-due-time").value;
   item.todoLocation = document.querySelector("#item-location").value;
