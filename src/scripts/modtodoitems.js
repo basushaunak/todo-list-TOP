@@ -1,7 +1,9 @@
-import {TodoItems} from "./todoitems.js";
+import {TodoItem} from "./todoitems.js";
+import {generateId, getProjectId} from "./utils.js";
 
 export function modTodoItems(items,projects,itemId=""){
     const mainContent = document.querySelector("#main-content");
+    let projTitle = "";
     let htmlString = `<div id="input-details">
                 <p>Title:</p>
                 <input
@@ -78,7 +80,10 @@ export function modTodoItems(items,projects,itemId=""){
     initForm(items,projects,itemId);
     document.querySelector("#btn-save").addEventListener("click",()=>{
       if(saveItem(items,projects)){
+        projTitle = document.querySelector("#item-project").value;
         initForm(items,projects,"");
+        document.querySelector("#item-project").value = projTitle;
+        document.querySelector("#item-title").focus();
       }
     });
     document.querySelector("#btn-reset").addEventListener("click",()=>{
@@ -95,7 +100,7 @@ function initForm(items,projects,itemId){
     document.querySelector("#item-project").value = "";
     document.querySelector("#item-title").value = "";
     document.querySelector("#item-description").value = "";
-    document.querySelector("#item-priority").value = "";
+    document.querySelector("#item-priority").value = "Normal";
     document.querySelector("#item-due-date").value = "";
     document.querySelector("#item-due-time").value = "";
     document.querySelector("#item-location").value = "";
@@ -138,6 +143,50 @@ function saveItem(items,projects){
     document.querySelector("#item-due-date").focus();
     return false;
   }
-  let enteredTime = document.querySelector("#item-due-time").value;
-  alert(enteredTime);
+  if(!document.querySelector("#item-title").value){
+    alert("Todo Title is mandatory");
+    document.querySelector("#item-title").focus();
+    return false;
+  }
+  if(!document.querySelector("#item-description").value){
+    alert("Todo Description is mandatory");
+    document.querySelector("#item-description").focus();
+    return false;
+  }
+  if(!document.querySelector("#item-project").value){
+    document.querySelector("#item-project").value = "Default";
+  }
+  let projId = getProjectId(projects, document.querySelector("#item-project").value);
+  let item = new TodoItem(generateId(),projId,document.querySelector("#item-title").value);
+  item.todoDescription = document.querySelector("#item-description").value;
+  item.todoPriority = document.querySelector("#item-priority").value;
+  item.todoDueDate = document.querySelector("#item-due-date").value;
+  item.todoDueTime = document.querySelector("#item-due-time").value;
+  item.todoLocation = document.querySelector("#item-location").value;
+  item.todoNotes = document.querySelector("#item-notes").value;
+  if(!document.querySelector("#item-participants").value){
+    item.todoParticipants = document.querySelector("#item-participants").value.split(",");
+  }else {
+    item.todoParticipants = [];
+  }
+  if(!document.querySelector("#item-checklist").value){
+    item.todoCheckList = document.querySelector("#item-checklist").value.split(",");
+  }else {
+    item.todoCheckList = [];
+  }
+  item.todoIsCompleted = document.querySelector("#item-iscompleted").value;
+  items.push(item);
+  alert("Item Saved");
+  return true;
+    // document.querySelector("#item-project").value = "";
+    // document.querySelector("#item-title").value = "";
+    // document.querySelector("#item-description").value = "";
+    // document.querySelector("#item-priority").value = "";
+    // document.querySelector("#item-due-date").value = "";
+    // document.querySelector("#item-due-time").value = "";
+    // document.querySelector("#item-location").value = "";
+    // document.querySelector("#item-notes").value = "";
+    // document.querySelector("#item-participants").value = "";
+    // document.querySelector("#item-checklist").value = "";
+    // document.querySelector("#item-iscompleted").value = false;
 }

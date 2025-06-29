@@ -8,6 +8,8 @@ export function todoItemList(items,projects,filtered = true){
                             <select multiple id="item-list">
                             </select>
                           </div>`;
+  const itemList = document.querySelector("#item-list");
+  let optionItem ;
   if(items.length === 0){
     // mainContent.innerHTML = "";
     document.querySelector("#item-list-div").style.display = "none";
@@ -19,6 +21,7 @@ export function todoItemList(items,projects,filtered = true){
   let tmpFGColor;
   let projTitle;
   for(let i = 0;i<items.length;i++){
+    optionItem = document.createElement("option");
     for(let j=0;j<projects.length;j++){
       if(projects[j].projectId === items[i].projectId){
         projTitle = setPadding(projects[j].projectTitle,15," ");
@@ -27,17 +30,22 @@ export function todoItemList(items,projects,filtered = true){
         break;
       }
     }
-    tempStr = `<option id = "${items[i].todoId}" name = "${items[i].todoId}">`;
-    //tempStr = `<option id = "${items[i].todoId}" name = "${items[i].todoId}" style="background-color: ${tmpBGColor}; color: ${tmpFGColor}">`;
-    tempStr += `: ${items[i].todoDueDate}`;
+    optionItem.id = `T${items[i].todoId}`;
+    optionItem.name = `T${items[i].todoId}`;
+    tempStr = ``;
+    tempStr += `${items[i].todoDueDate}: `;
     tempStr += setPadding(items[i].todoTitle,20," ");
     tempStr += `: ${setPadding(projTitle,15," ")}`;
-    tempStr += `: ${setPadding(items[i].todoDescription,30,0)}`;
-    tempStr = `</option>`
-    mainContent.innerHTML += tempStr;
-    document.querySelector(`"#{items[i].todoId}`).style.color = tmpFGColor;
-    document.querySelector(`"#{items[i].todoId}`).style.backgroundColor = tmpBGColor;
+    tempStr += `: ${setPadding(items[i].todoDescription,30," ")}`;
+    console.log(tempStr);
+    optionItem.value = tempStr;
+    optionItem.innerText = tempStr;
+    optionItem.style.color = tmpFGColor;
+    optionItem.style.backgroundColor = tmpBGColor;
+    itemList.appendChild(optionItem);
   }
+  console.log(projects);
+  console.log(items);
   if(!filtered){
     document.querySelector("#item-list-div").innerHTML += `<div id="buttons"><button type="button" id="btn-save-data">Save</button><button type="button" id="btn-remove-data">Remove</button></div>`
     document.querySelector("#buttons").style.marginBlockStart = "1rem";
