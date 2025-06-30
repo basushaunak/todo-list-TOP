@@ -7,7 +7,7 @@ export class Project {
     this.#projectId = id;
     this.#projectTitle = title;
     this.#projectDescription = desc;
-    this.#projectColor = "#ffffff";
+    this.#projectColor = "#545454";
   }
   set projectId(id) {
     //Cant be changed

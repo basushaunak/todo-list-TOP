@@ -319,3 +319,12 @@ option{
   margin-inline: auto;
   /* background-color: red; */
 }
+
+th{
+  text-align: left;
+}
+
+td{
+  padding-inline: 0.5em;
+  /* white-space: nowrap; */
+}
