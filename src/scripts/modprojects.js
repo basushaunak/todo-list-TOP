@@ -1,4 +1,4 @@
-export function modProjects(){
+export function modProjects(items,projects,projectId=""){
     const mainContent = document.querySelector("#main-content");
     let str = `
                 <div id="project-mod">

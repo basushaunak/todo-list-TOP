@@ -136,7 +136,7 @@ function initForm(items,projects,itemId){
 }
 
 
-function saveItem(items,projects){
+function saveItem(items,projects,itemId = ""){
   let enteredDate = document.querySelector("#item-due-date").value;
   if(!enteredDate){
     alert("Invalid Date!");
@@ -156,41 +156,49 @@ function saveItem(items,projects){
   if(!document.querySelector("#item-project").value){
     document.querySelector("#item-project").value = "Default";
   }
+  let item;
   let projId = getProjectId(projects, document.querySelector("#item-project").value);
-  let item = new TodoItem(generateId(),projId,document.querySelector("#item-title").value);
-  item.todoDescription = document.querySelector("#item-description").value;
-  if(document.querySelector("#item-priority").value){
-    item.todoPriority = document.querySelector("#item-priority").value;
+  if(!itemId){
+    item = new TodoItem(generateId(),projId,document.querySelector("#item-title").value);
   }else{
-    item.todoPriority = "Normal";
-  }  
-  item.todoDueDate = document.querySelector("#item-due-date").value;
-  item.todoDueTime = document.querySelector("#item-due-time").value;
-  item.todoLocation = document.querySelector("#item-location").value;
-  item.todoNotes = document.querySelector("#item-notes").value;
-  if(!document.querySelector("#item-participants").value){
-    item.todoParticipants = document.querySelector("#item-participants").value.split(",");
-  }else {
-    item.todoParticipants = [];
+    for(let i = i;i<items.length;i++){
+      if(items[i].todoId === itemId){
+        item = items[i];
+        break;
+      }
+    }
   }
-  if(!document.querySelector("#item-checklist").value){
-    item.todoCheckList = document.querySelector("#item-checklist").value.split(",");
-  }else {
-    item.todoCheckList = [];
-  }
-  item.todoIsCompleted = document.querySelector("#item-iscompleted").value;
+item.todoDescription = document.querySelector("#item-description").value;
+if(document.querySelector("#item-priority").value){
+  item.todoPriority = document.querySelector("#item-priority").value;
+}else{
+  item.todoPriority = "Normal";
+}  
+item.todoDueDate = document.querySelector("#item-due-date").value;
+item.todoDueTime = document.querySelector("#item-due-time").value;
+item.todoLocation = document.querySelector("#item-location").value;
+item.todoNotes = document.querySelector("#item-notes").value;
+if(document.querySelector("#item-participants").value){
+  item.todoParticipants = document.querySelector("#item-participants").value.split(",");
+}else {
+  item.todoParticipants = [];
+}
+if(document.querySelector("#item-checklist").value){
+  item.todoCheckList = document.querySelector("#item-checklist").value.split(",");
+}else {
+  item.todoCheckList = [];
+}
+item.todoIsCompleted = document.querySelector("#item-iscompleted").value;
+if(!itemId){
   items.push(item);
   alert("Item Saved");
   return true;
-    // document.querySelector("#item-project").value = "";
-    // document.querySelector("#item-title").value = "";
-    // document.querySelector("#item-description").value = "";
-    // document.querySelector("#item-priority").value = "";
-    // document.querySelector("#item-due-date").value = "";
-    // document.querySelector("#item-due-time").value = "";
-    // document.querySelector("#item-location").value = "";
-    // document.querySelector("#item-notes").value = "";
-    // document.querySelector("#item-participants").value = "";
-    // document.querySelector("#item-checklist").value = "";
-    // document.querySelector("#item-iscompleted").value = false;
+}else {
+  for(let i = i;i<items.length;i++){
+      if(items[i].todoId === itemId){
+        items[i] = item;
+        break;
+      }
+    }
+}
 }

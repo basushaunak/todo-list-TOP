@@ -106,9 +106,7 @@ h1:hover {
 .wrapper {
   width: clamp(450px, 80%, 1440px);
   background-color: var(--gray-200);
-  /* border: 2px var(--pure-black) solid; */
   margin-inline: auto;
-  /* margin-block-start: 2rem; */
 }
 
 #heading,
@@ -117,8 +115,6 @@ h1:hover {
   color: white;
   align-items: center;
   justify-content: center;
-  /* height: 100%;
-	width: 100%; */
 }
 
 #usr-img-div {
@@ -169,12 +165,10 @@ h1:hover {
 
 #buffer {
   display: none;
-  /* border: 2px black solid; */
 }
 
 #project-details {
   display: none;
-  /* border: 2px black solid; */
 }
 
 #projects-div {
@@ -222,18 +216,12 @@ h1:hover {
   height: calc(100vh - 3rem);
 }
 
-/* #main-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-} */
-
 #input-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 1rem;
   justify-content: center;
   align-items: center;
-  /* width: auto; */
   gap: 1rem;
 }
 
@@ -250,7 +238,6 @@ h1:hover {
     display: block;
     background-color: var(--gray-600);
     color: var(--pure-white);
-    /* display: none; */
   }
   #buffer {
     display: block;
@@ -282,12 +269,8 @@ h1:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: auto;
-  /* border: 2px black solid; */
   gap: 1rem;
 }
-/* #project-mod > *{
-  border: 1px red solid;
-} */
 
 #proj-buttons{
   grid-column: span 2;
@@ -317,14 +300,13 @@ option{
   margin-top: 2rem;
   width: 95%;
   margin-inline: auto;
-  /* background-color: red; */
 }
 
 th{
   text-align: left;
+  padding-inline-start: 0.5em;
 }
 
 td{
   padding-inline: 0.5em;
-  /* white-space: nowrap; */
 }
