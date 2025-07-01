@@ -1,7 +1,13 @@
 import { modTodoItems } from "./modtodoitems.js";
-import {setPadding,getOppositeColorRGB, hexToRGB, writeData, removeData, showError} from "./utils.js";
+import {setPadding, hexToRGB, writeData, removeData, showError, getTextColor} from "./utils.js";
 
 export function todoItemList(items,projects,filtered = true){
+  document.querySelector("#details").innerHTML = `<div id="heading"></div>
+              <div id="main-content">
+              </div>
+            <div id="status-message-div">
+              <p id="status-message"></p>
+            </div>`;
   const msgDiv = document.querySelector("#status-message");
   const mainContent = document.querySelector("#main-content");
   document.querySelector("#heading").innerText = "List of TODO Items";
@@ -44,8 +50,7 @@ export function todoItemList(items,projects,filtered = true){
       if(projects[j].projectId === items[i].projectId){
         projTitle = setPadding(projects[j].projectTitle,15," ");
         tmpBGColor = projects[j].projectColor;
-        tmpFGColor = getOppositeColorRGB(hexToRGB(projects[j].projectColor));
-        console.log(tmpBGColor);
+        tmpFGColor = getTextColor(hexToRGB(projects[j].projectColor));
         break;
       }
     }
@@ -60,7 +65,7 @@ export function todoItemList(items,projects,filtered = true){
     document.querySelector(`#T${items[i].todoId}`).style.backgroundColor = tmpBGColor;
   }
   if(!filtered){
-    document.querySelector("#item-list-div").innerHTML += `<div id="buttons"><button type="button" id="btn-save-data">Save</button><button type="button" id="btn-remove-data">Remove</button></div>`
+    document.querySelector("#item-list-div").innerHTML += `<div id="buttons"><button type="button" id="btn-save-data" title="Save data to localStorage">Save</button><button type="button" id="btn-remove-data" title="Remove ALL data from localStorage">Remove</button></div>`
     document.querySelector("#buttons").style.marginBlockStart = "1rem";
     document.querySelector("#buttons").style.display = "grid";
     document.querySelector("#buttons").style.gridTemplateColumns = "1fr 1fr";
@@ -70,6 +75,9 @@ export function todoItemList(items,projects,filtered = true){
       writeData("projects",projects);
     })
     document.querySelector("#btn-remove-data").addEventListener("click",()=>{
+      if(!window.confirm("Are you sure you want to remove all data from localStorage? This can not be undone!")){
+        return false;
+      }
       if(!removeData("todoItems")){
         showError("Unable to delete Todo-Items, local storage available ?",msgDiv)
       }

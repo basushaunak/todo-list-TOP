@@ -79,7 +79,7 @@ export function modTodoItems(items,projects,itemId=""){
     mainContent.style.gridTemplateColumns = '2fr 1fr 1fr';
     initForm(items,projects,itemId);
     document.querySelector("#btn-save").addEventListener("click",()=>{
-      if(saveItem(items,projects)){
+      if(saveItem(items,projects,itemId)){
         projTitle = document.querySelector("#item-project").value;
         initForm(items,projects,"");
         document.querySelector("#item-project").value = projTitle;
@@ -112,9 +112,9 @@ function initForm(items,projects,itemId){
     {
     document.querySelector("#heading").innerText = "Change TODO Item";
     for(let i = 0; i< items.length;i++){
-      if(items[i]===itemId){
+      if(items[i].todoId===itemId){
         for(let j = 0; j<projects.length;j++){
-          if(items.projectId === projects[j].projectId){
+          if(items[i].projectId === projects[j].projectId){
             document.querySelector("#item-project").value = projects[j].projectTitle;
             break;
           }
@@ -161,9 +161,11 @@ function saveItem(items,projects,itemId = ""){
   if(!itemId){
     item = new TodoItem(generateId(),projId,document.querySelector("#item-title").value);
   }else{
-    for(let i = i;i<items.length;i++){
+    for(let i = 0;i<items.length;i++){
       if(items[i].todoId === itemId){
         item = items[i];
+        item.projectId = projId;
+        item.todoTitle = document.querySelector("#item-title").value;
         break;
       }
     }
@@ -194,11 +196,14 @@ if(!itemId){
   alert("Item Saved");
   return true;
 }else {
-  for(let i = i;i<items.length;i++){
+  for(let i = 0;i<items.length;i++){
       if(items[i].todoId === itemId){
         items[i] = item;
+        alert("Edits saved");
+        console.log(item);
         break;
       }
     }
+    return true;
 }
 }
