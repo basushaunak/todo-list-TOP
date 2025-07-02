@@ -213,7 +213,7 @@ h1:hover {
 #details {
   display: grid;
   grid-template-rows: 0.5fr 6fr 1fr 0.25fr;
-  height: calc(100vh - 3rem);
+  height: calc(100vh - 5rem);
 }
 
 #input-details {

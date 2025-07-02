@@ -54,12 +54,12 @@ export function isLocalStorageAvailable(type) {
   }
 }
 
-export function showError(errorMsg, element = "") {
+export function showMessage(msg, element = "") {
   if (!element) {
-    console.log(errorMsg);
+    console.log(msg);
     return;
   }
-  element.innerText = errorMsg;
+  element.innerText = msg;
 }
 
 export function removeTodoItem(todoArray, itemTitle) {

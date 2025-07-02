@@ -1,13 +1,10 @@
 import { modTodoItems } from "./modtodoitems.js";
-import {setPadding, hexToRGB, writeData, removeData, showError, getTextColor} from "./utils.js";
+import {setPadding, hexToRGB, writeData, removeData, showMessage, getTextColor} from "./utils.js";
 
 export function todoItemList(items,projects,filter = false){
   document.querySelector("#details").innerHTML = `<div id="heading"></div>
               <div id="main-content">
-              </div>
-            <div id="status-message-div">
-              <p id="status-message"></p>
-            </div>`;
+              </div>`;
   const msgDiv = document.querySelector("#status-message");
   const mainContent = document.querySelector("#main-content");
   let itemsToShow=[];
@@ -36,22 +33,22 @@ export function todoItemList(items,projects,filter = false){
     }
   })
     if(filter){
-      switch(filter){
+      let fltr = filter[0];
+      switch(fltr){
         case "TODAY":
           {
             let dt = new Date().toISOString().substring(0,10);
             itemsToShow = items.filter(item=> item.todoDueDate === dt);
+            showMessage("List of Todo Items for Today",msgDiv);
             break;
           }
-        case "TW": //This Week
-          break;
-        case "TM": //This Month
-          break;
-        case "NW": //Next Week
-          break;
-        case "NM": //Next Month
+        case "TIMEPERIOD": //Time Period
           break;
         case "DT": //Specific Date
+          break;
+        case "PRJ":
+          itemsToShow = items.filter(item=> item.projectId === filter[1]);
+          showMessage(`List of Todo Items for ${filter[2]}`,msgDiv);
           break;
       }
     
@@ -60,7 +57,7 @@ export function todoItemList(items,projects,filter = false){
   }
   if(itemsToShow.length === 0){
     document.querySelector("#item-list-div").style.display = "none";
-    showError("There are no Todo-Items",msgDiv);
+    showMessage("There are no Todo-Items",msgDiv);
     return -1;
   }
   let tempStr = ``;
@@ -103,10 +100,10 @@ export function todoItemList(items,projects,filter = false){
         return false;
       }
       if(!removeData("todoItems")){
-        showError("Unable to delete Todo-Items, local storage available ?",msgDiv)
+        showMessage("Unable to delete Todo-Items, local storage available ?",msgDiv)
       }
       if(!removeData("projects")){
-        showError("Unable to delete Projects, local storage available ?",msgDiv)
+        showMessage("Unable to delete Projects, local storage available ?",msgDiv)
       }
     })
   }

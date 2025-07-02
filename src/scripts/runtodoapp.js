@@ -1,6 +1,6 @@
 import {
   isLocalStorageAvailable,
-  showError,
+  showMessage,
   generateId,
   readData,
 } from "./utils.js";
@@ -22,52 +22,62 @@ export function runTodoApp() {
     switch (e.target.id){
       case "txt-all-tasks":
         {
-          showError("All todo item",msgDiv);
+          showMessage("All todo item",msgDiv);
           todoItemList(todoItems,projects,false);
-          break;
-        }
-      case "txt-task-today":
-        {          
-          todoItemList(todoItems,projects,"TODAY");
           break;
         }
       case "txt-task-new":
         {
-          showError("Add new todo item",msgDiv);
+          showMessage("Add new todo item",msgDiv);
           modTodoItems(todoItems,projects,"");
+          break;
+        }
+      case "txt-task-today":
+        {          
+          todoItemList(todoItems,projects,["TODAY","",""]);
           break;
         }
       case "txt-thisweek":
         {
-          showError("Todo Items for this week",msgDiv);
+          showMessage("Todo Items for this week",msgDiv);
           break;
         }
       case "txt-thismonth":
         {
-          showError("Todo Items for this month",msgDiv);
+          showMessage("Todo Items for this month",msgDiv);
           break;
         }
       case "text-nextweek":
         {
-          showError("Todo Items for next week",msgDiv);
+          showMessage("Todo Items for next week",msgDiv);
           break;
         }
       case "text-nextmonth":
         {
-          showError("Todo Items for next month",msgDiv);
+          showMessage("Todo Items for next month",msgDiv);
           break;
         }
       case "btn-date-go":
         {
-          showError(`Todo Items for ${document.querySelector("#filter-date").value}`,msgDiv);
+          showMessage(`Todo Items for ${document.querySelector("#filter-date").value}`,msgDiv);
           break;
         }
     }
   });
-  menuProjects.addEventListener("click",(e)=>{showError("You Clicked: "+e.target.id,msgDiv)});
+  menuProjects.addEventListener("click",(e)=>{
+    switch(e.target.id){
+      case "txt-all-projects":
+        break;
+      case "txt-new-project":
+        break;
+      default:
+        todoItemList(todoItems,projects,["PRJ",e.target.id,e.target.innerText]);
+        break;
+    }
+  });
 
   if (!isLocalStorageAvailable("localStorage")) {
-    showError("Local Storage is not available, data will not be saved!!!", msgDiv);
+    showMessage("Local Storage is not available, data will not be saved!!!", msgDiv);
   } else {
     projData = readData("projects");
     todoData = readData("todoItems");
