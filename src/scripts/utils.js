@@ -12,6 +12,7 @@ export function generateId() {
   return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
 
+
 export function properCase(name) {
   if (!name) return "";
   return name

@@ -1,4 +1,4 @@
-import {TodoItem} from "./todoitems.js";
+import {TodoItem} from "./todoitem.js";
 import {generateId, getProjectId} from "./utils.js";
 
 export function modTodoItems(items,projects,itemId=""){

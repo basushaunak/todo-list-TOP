@@ -4,10 +4,11 @@ import {
   generateId,
   readData,
 } from "./utils.js";
-import { Project } from "./todoprojects.js";
-import { TodoItem } from "./todoitems.js";
+import { Project } from "./project.js";
+import { TodoItem } from "./todoitem.js";
 import {todoItemList} from "./todoitemlist.js";
 import {modTodoItems} from "./modtodoitems.js";
+import {populateData} from "./populatedata.js";
 
 export function runTodoApp() {
   let projData = [];
@@ -110,6 +111,8 @@ export function runTodoApp() {
     }
     todoData=[];
   }
+  populateData(todoItems,projects);
+  // alert(todoItems.length);
   if (projects.length === 0) {
     projects.push(new Project(generateId(), "Default", "Default Project"));
   }
