@@ -26,6 +26,11 @@ export function runTodoApp() {
           todoItemList(todoItems,projects,false);
           break;
         }
+      case "txt-task-today":
+        {          
+          todoItemList(todoItems,projects,"TODAY");
+          break;
+        }
       case "txt-task-new":
         {
           showError("Add new todo item",msgDiv);

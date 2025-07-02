@@ -1,7 +1,7 @@
 import { modTodoItems } from "./modtodoitems.js";
 import {setPadding, hexToRGB, writeData, removeData, showError, getTextColor} from "./utils.js";
 
-export function todoItemList(items,projects,filtered = true){
+export function todoItemList(items,projects,filter = false){
   document.querySelector("#details").innerHTML = `<div id="heading"></div>
               <div id="main-content">
               </div>
@@ -10,6 +10,7 @@ export function todoItemList(items,projects,filtered = true){
             </div>`;
   const msgDiv = document.querySelector("#status-message");
   const mainContent = document.querySelector("#main-content");
+  let itemsToShow=[];
   document.querySelector("#heading").innerText = "List of TODO Items";
   mainContent.innerHTML = `<div id="item-list-div">
                           <table id="item-list-table">
@@ -34,7 +35,30 @@ export function todoItemList(items,projects,filtered = true){
       modTodoItems(items,projects,closestRow.id.slice(1));
     }
   })
-  if(items.length === 0){
+    if(filter){
+      switch(filter){
+        case "TODAY":
+          {
+            let dt = new Date().toISOString().substring(0,10);
+            itemsToShow = items.filter(item=> item.todoDueDate === dt);
+            break;
+          }
+        case "TW": //This Week
+          break;
+        case "TM": //This Month
+          break;
+        case "NW": //Next Week
+          break;
+        case "NM": //Next Month
+          break;
+        case "DT": //Specific Date
+          break;
+      }
+    
+  }else{
+    itemsToShow = items;
+  }
+  if(itemsToShow.length === 0){
     document.querySelector("#item-list-div").style.display = "none";
     showError("There are no Todo-Items",msgDiv);
     return -1;
@@ -43,28 +67,28 @@ export function todoItemList(items,projects,filtered = true){
   let tmpBGColor;
   let tmpFGColor;
   let projTitle;
-  
-  for(let i = 0;i<items.length;i++){
+
+  for(let i = 0;i<itemsToShow.length;i++){
     tempStr = ``;
     for(let j=0;j<projects.length;j++){
-      if(projects[j].projectId === items[i].projectId){
+      if(projects[j].projectId === itemsToShow[i].projectId){
         projTitle = setPadding(projects[j].projectTitle,15," ");
         tmpBGColor = projects[j].projectColor;
         tmpFGColor = getTextColor(hexToRGB(projects[j].projectColor));
         break;
       }
     }
-    tempStr = `<tr id="T${items[i].todoId}">`;
-    tempStr += `<td>${items[i].todoDueDate}</td>`;
-    tempStr += `<td>${items[i].todoTitle}</td>`;
+    tempStr = `<tr id="T${itemsToShow[i].todoId}">`;
+    tempStr += `<td>${itemsToShow[i].todoDueDate}</td>`;
+    tempStr += `<td>${itemsToShow[i].todoTitle}</td>`;
     tempStr += `<td>${projTitle}</td>`;
-    tempStr += `<td>${items[i].todoDescription}</td>`;
+    tempStr += `<td>${itemsToShow[i].todoDescription}</td>`;
     tempStr += `</tr>`;
     itemList.innerHTML += tempStr;
-    document.querySelector(`#T${items[i].todoId}`).style.color = tmpFGColor;
-    document.querySelector(`#T${items[i].todoId}`).style.backgroundColor = tmpBGColor;
+    document.querySelector(`#T${itemsToShow[i].todoId}`).style.color = tmpFGColor;
+    document.querySelector(`#T${itemsToShow[i].todoId}`).style.backgroundColor = tmpBGColor;
   }
-  if(!filtered){
+  if(!filter){
     document.querySelector("#item-list-div").innerHTML += `<div id="buttons"><button type="button" id="btn-save-data" title="Save data to localStorage">Save</button><button type="button" id="btn-remove-data" title="Remove ALL data from localStorage">Remove</button></div>`
     document.querySelector("#buttons").style.marginBlockStart = "1rem";
     document.querySelector("#buttons").style.display = "grid";
