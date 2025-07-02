@@ -1,4 +1,4 @@
-import { Project } from "./todoprojects.js";
+import { Project } from "./project.js";
 export function generateId() {
   const now = new Date();
 
