@@ -300,8 +300,8 @@ option{
   margin-top: 2rem;
   width: 95%;
   margin-inline: auto;
-  /* height: 500px;
-  overflow: scroll; */
+  height: calc(100vh-5rem);
+  overflow-y: scroll;
 }
 
 /* #item-list-table{

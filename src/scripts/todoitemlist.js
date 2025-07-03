@@ -19,8 +19,8 @@ export function todoItemList(items,projects,filter = false){
                               </tr>
                             </table> 
                           </div>`;
-  // document.querySelector("#item-list-div").style.height = "100%";
-  document.querySelector("#item-list-div").style.width = "95%";
+  // document.querySelector("#item-list-div").style.height = "calc(100vh-5rem)";
+  // document.querySelector("#item-list-div").style.width = "95%";
   // document.querySelector("#item-list-div").style.overflow = "scroll";
   const itemList = document.querySelector("#item-list-table");
   itemList.style.cursor = "cell";
