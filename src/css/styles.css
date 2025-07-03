@@ -44,7 +44,7 @@ html {
   font-size: 1.2rem;
   line-height: 1.2em;
   font-family: var(--font-family);
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 input,
@@ -213,7 +213,7 @@ h1:hover {
 #details {
   display: grid;
   grid-template-rows: 0.5fr 6fr 1fr 0.25fr;
-  height: calc(100vh - 5rem);
+  /* height: calc(100vh - 5rem); */
 }
 
 #input-details {
@@ -300,11 +300,30 @@ option{
   margin-top: 2rem;
   width: 95%;
   margin-inline: auto;
+  /* height: 500px;
+  overflow: scroll; */
 }
 
+/* #item-list-table{
+  height: 500px;
+  overflow: scroll;
+} */
+
 th{
+  /* display: inline-block;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px; */
   text-align: left;
   padding-inline-start: 0.5em;
+}
+
+th:hover{
+  cursor:pointer;
 }
 
 td{

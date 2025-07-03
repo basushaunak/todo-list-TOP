@@ -1,5 +1,5 @@
 import { modTodoItems } from "./modtodoitems.js";
-import {setPadding, hexToRGB, writeData, removeData, showMessage, getTextColor} from "./utils.js";
+import {hexToRGB, writeData, removeData, showMessage, getTextColor} from "./utils.js";
 
 export function todoItemList(items,projects,filter = false){
   document.querySelector("#details").innerHTML = `<div id="heading"></div>
@@ -19,9 +19,9 @@ export function todoItemList(items,projects,filter = false){
                               </tr>
                             </table> 
                           </div>`;
-  document.querySelector("#item-list-div").style.height = "100%";
+  // document.querySelector("#item-list-div").style.height = "100%";
   document.querySelector("#item-list-div").style.width = "95%";
-  document.querySelector("#item-list-div").style.overflow = "scroll";
+  // document.querySelector("#item-list-div").style.overflow = "scroll";
   const itemList = document.querySelector("#item-list-table");
   itemList.style.cursor = "cell";
   itemList.style.userSelect = "none";
@@ -43,6 +43,9 @@ export function todoItemList(items,projects,filter = false){
             break;
           }
         case "TIMEPERIOD": //Time Period
+          console.log(filter);
+          itemsToShow = items.filter(item => item.todoDueDate >= filter[1] && item.todoDueDate <= filter[2]);
+          showMessage(`List of Todo Items for the period ${filter[1]} to ${filter[2]}`)
           break;
         case "DT": //Specific Date
           break;
@@ -69,7 +72,7 @@ export function todoItemList(items,projects,filter = false){
     tempStr = ``;
     for(let j=0;j<projects.length;j++){
       if(projects[j].projectId === itemsToShow[i].projectId){
-        projTitle = setPadding(projects[j].projectTitle,15," ");
+        projTitle = projects[j].projectTitle;
         tmpBGColor = projects[j].projectColor;
         tmpFGColor = getTextColor(hexToRGB(projects[j].projectColor));
         break;

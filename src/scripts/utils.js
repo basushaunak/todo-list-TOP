@@ -12,6 +12,21 @@ export function generateId() {
   return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
 
+export function startOfWeek(date=new Date())
+{
+  // Calculate the difference between the date's day of the month and its day of the week
+  var diff = date.getDate() - date.getDay() + (date.getDay() === 0 ? -6 : 1);
+
+  // Set the date to the start of the week by setting it to the calculated difference
+  return new Date(date.setDate(diff));
+}
+
+export function endOfWeek(date=new Date()){
+  // Calculate the date of the last day of the week by adding the difference between the day of the month and the day of the week, then adding 6.
+  var lastday = date.getDate() - (date.getDay() - 1) + 6;
+  // Set the date to the calculated last day of the week.
+  return new Date(date.setDate(lastday));
+}
 
 export function properCase(name) {
   if (!name) return "";

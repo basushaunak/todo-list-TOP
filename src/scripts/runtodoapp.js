@@ -3,6 +3,8 @@ import {
   showMessage,
   generateId,
   readData,
+  startOfWeek,
+  endOfWeek,
 } from "./utils.js";
 import { Project } from "./project.js";
 import { TodoItem } from "./todoitem.js";
@@ -38,24 +40,47 @@ export function runTodoApp() {
           todoItemList(todoItems,projects,["TODAY","",""]);
           break;
         }
-      case "txt-thisweek":
+      case "txt-task-thisweek":
         {
-          showMessage("Todo Items for this week",msgDiv);
+          let startOfTimePeriod = startOfWeek().toISOString().slice(0,10);
+          let endOfTimePeriod = endOfWeek().toISOString().slice(0,10);
+          todoItemList(todoItems,projects,["TIMEPERIOD",startOfTimePeriod,endOfTimePeriod]);
           break;
         }
-      case "txt-thismonth":
+      case "txt-task-thismonth":
         {
-          showMessage("Todo Items for this month",msgDiv);
+          let startOfTimePeriod = new Date();
+          startOfTimePeriod = new Date(startOfTimePeriod.setDate(1));
+          let tmpDate = new Date(startOfTimePeriod);
+          let endOfTimePeriod = new Date(tmpDate.setMonth(tmpDate.getMonth()+1));
+          tmpDate = null;
+          endOfTimePeriod = new Date(endOfTimePeriod.setDate(0));
+          startOfTimePeriod = startOfTimePeriod.toISOString().slice(0,10);
+          endOfTimePeriod = endOfTimePeriod.toISOString().slice(0,10);
+          todoItemList(todoItems,projects,["TIMEPERIOD",startOfTimePeriod,endOfTimePeriod]);
           break;
         }
-      case "text-nextweek":
+      case "txt-task-nextweek":
         {
-          showMessage("Todo Items for next week",msgDiv);
+          let tmpDate = new Date();
+          tmpDate.setDate(tmpDate.getDate()+7);
+          let startOfTimePeriod = startOfWeek(new Date(tmpDate)).toISOString().slice(0,10);
+          let endOfTimePeriod = endOfWeek(new Date(tmpDate)).toISOString().slice(0,10);
+          todoItemList(todoItems,projects,["TIMEPERIOD",startOfTimePeriod,endOfTimePeriod]);
           break;
         }
-      case "text-nextmonth":
+      case "txt-task-nextmonth":
         {
-          showMessage("Todo Items for next month",msgDiv);
+          let startOfTimePeriod = new Date();
+          startOfTimePeriod = new Date(startOfTimePeriod.setMonth(startOfTimePeriod.getMonth()+1));
+          startOfTimePeriod = new Date(startOfTimePeriod.setDate(1));
+          let tmpDate = new Date(startOfTimePeriod);
+          let endOfTimePeriod = new Date(tmpDate.setMonth(tmpDate.getMonth()+1));
+          tmpDate = null;
+          endOfTimePeriod = new Date(endOfTimePeriod.setDate(0));
+          startOfTimePeriod = startOfTimePeriod.toISOString().slice(0,10);
+          endOfTimePeriod = endOfTimePeriod.toISOString().slice(0,10);
+          todoItemList(todoItems,projects,["TIMEPERIOD",startOfTimePeriod,endOfTimePeriod]);
           break;
         }
       case "btn-date-go":
@@ -111,16 +136,19 @@ export function runTodoApp() {
     }
     todoData=[];
   }
-  populateData(todoItems,projects);
-  // alert(todoItems.length);
+  if(window.confirm("Do you want fill with sample data? WARNING: It is extremely infuriating/irritating!!!")){
+    populateData(todoItems,projects);
+  }
   if (projects.length === 0) {
     projects.push(new Project(generateId(), "Default", "Default Project"));
   }
   let str ;
+  projects.sort((a,b)=>a.projectTitle.localeCompare(b.projectTitle));
   for(let i = 0; i < projects.length; i++){
     str = ``;
     str = `<p id=${projects[i].projectId}>${projects[i].projectTitle}</p>`;
     menuProjects.innerHTML += str;
   }
+  todoItems.sort((a,b)=>a.todoDueDate.localeCompare(b.todoDueDate));
   todoItemList(todoItems,projects,false);
 }
