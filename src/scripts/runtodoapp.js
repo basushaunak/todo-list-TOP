@@ -11,6 +11,7 @@ import { TodoItem } from "./todoitem.js";
 import {todoItemList} from "./todoitemlist.js";
 import {modTodoItems} from "./modtodoitems.js";
 import {populateData} from "./populatedata.js";
+import {projectList} from "./projectlist.js";
 
 export function runTodoApp() {
   let projData = [];
@@ -93,6 +94,7 @@ export function runTodoApp() {
   menuProjects.addEventListener("click",(e)=>{
     switch(e.target.id){
       case "txt-all-projects":
+        projectList(todoItems,projects);
         break;
       case "txt-new-project":
         break;
