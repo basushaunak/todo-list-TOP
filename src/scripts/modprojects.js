@@ -12,19 +12,17 @@ export function modProjects(items,projects,projectId=""){
                         <button type="button" id="btn-prj-cancel">Cancel</button>
                     </div>
                     </div>
-                    <div id="project-list-div">
-                    <select multiple name="item-list" id="item-list">
+                    <div id="item-list-div">
+                    <select multiple name="item-list" id="item-list" style="width: 30ch">
                     </select>
                     </table> 
                     </div>
                 </div>`;
     mainContent.innerHTML = str;
-    populateForm(projects,items,projectId);
-    alert(projectId);
-
+    populateForm(items,projects,projectId);
 }
 
-function populateForm(projects,items,projectId){
+function populateForm(items,projects,projectId){
     let itemsToShow;
     let itemList = document.querySelector("#item-list");
     if(!projectId){
@@ -37,7 +35,8 @@ function populateForm(projects,items,projectId){
                 document.querySelector("#project-title").value = projects[i].projectTitle;
                 document.querySelector("#project-desc").value = projects[i].projectDescription;
                 document.querySelector("#project-color").value = projects[i].projectColor;
-                itemsToShow = items.filter(item=>item.ProjectId===projectId);
+                itemsToShow = items.filter(item => item.projectId === projectId);
+                console.log(items);
                 for(let j = 0; j<itemsToShow.length;j++){
                     itemList.innerHTML += `<option>${itemsToShow[j].todoTitle}</option>`;
                 }
