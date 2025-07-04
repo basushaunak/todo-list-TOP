@@ -135,8 +135,16 @@ function initForm(items,projects,itemId){
         document.querySelector("#item-priority").value = items[i].todoPriority;
         document.querySelector("#item-due-date").value = items[i].todoDueDate;
         document.querySelector("#item-due-time").value = items[i].todoDueTime;
-        document.querySelector("#item-location").value = items[i].todoLocation;
+        if(items[i].todoLocation){
+          document.querySelector("#item-location").value = items[i].todoLocation;
+        }else{
+          document.querySelector("#item-location").value = "";
+        }
+        if(items[i].todoNotes){
         document.querySelector("#item-notes").value = items[i].todoNotes;
+        }else{
+          document.querySelector("#item-notes").value = "";
+        }
         document.querySelector("#item-participants").value = items[i].todoParticipants.toString();
         document.querySelector("#item-checklist").value = items[i].todoCheckList.toString();
         document.querySelector("#item-iscompleted").value = items[i].todoIsCompleted;

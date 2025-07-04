@@ -41,7 +41,7 @@
 html {
   background-color: var(--gray-100);
   color: var(--pure-black);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.2em;
   font-family: var(--font-family);
   /* height: 100vh; */
@@ -51,7 +51,7 @@ input,
 textarea,
 button,
 select {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 input,
