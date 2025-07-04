@@ -1,4 +1,4 @@
-import "./css/runtodo-styles.css";
+import "../css/runtodo-styles.css";
 import {
   isLocalStorageAvailable,
   showMessage,
@@ -139,7 +139,7 @@ export function runTodoApp() {
     }
     todoData=[];
   }
-  if(!todoItems){
+  if(todoItems.length === 0){
     if(window.confirm("Do you want fill with sample data?")){
       populateData(todoItems,projects);
     }
