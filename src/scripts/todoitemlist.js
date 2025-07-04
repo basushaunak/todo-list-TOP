@@ -108,6 +108,8 @@ export function todoItemList(items,projects,filter = false){
       if(!removeData("projects")){
         showMessage("Unable to delete Projects, local storage available ?",msgDiv)
       }
+      itemsToShow=[];
+      mainContent.innerHTML = "";
     })
   }
 }

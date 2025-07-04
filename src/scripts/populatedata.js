@@ -13,31 +13,26 @@ export function populateData(items,projects){
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Sell")){
-        alert("Continue...");
         project = new Project(generateId(),"Sell","Sell - todo");
         project.projectColor = "#50fa7b";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Gardening")){
-        alert("Continue...");
         project = new Project(generateId(),"Gardening","Gardening - todo");
         project.projectColor = "#f2ad69";   
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Studying")){
-        alert("Continue...");
         project = new Project(generateId(),"Studying","Studying - todo");
         project.projectColor = "#ff5555";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Vacation")){
-        alert("Continue...");
         project = new Project(generateId(),"Vacation","Vacation - todo");
         project.projectColor = "#f9930a";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "TOP")){
-        alert("Continue...");
         project = new Project(generateId(),"TOP","TOP Course Planner - todo");
         project.projectColor = "#6272a4";
         projects.push(project);
@@ -47,7 +42,6 @@ export function populateData(items,projects){
     let item;
     
     if(!items.some(itm=>itm.todoTitle === "Buy Item 1")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Buy"),"Buy Item 1");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-09-30";
@@ -57,7 +51,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Buy Item 2")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Buy"),"Buy Item 2");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-04-30";
@@ -67,7 +60,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Buy Item 3")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Buy"),"Buy Item 3");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-10-30";
@@ -77,7 +69,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Buy Item 4")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Buy"),"Buy Item 4");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-08-12";
@@ -87,7 +78,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Buy Item 5")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Buy"),"Buy Item 5");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-07-28";
@@ -97,7 +87,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Sell Item 1")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Sell"),"Sell Item 1");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-10-30";
@@ -107,7 +96,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Sell Item 2")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Sell"),"Sell Item 2");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-03-21";
@@ -117,7 +105,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Sell Item 3")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Sell"),"Sell Item 3");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-06-17";
@@ -127,7 +114,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Sell Item 4")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Sell"),"Sell Item 4");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-06-22";
@@ -137,7 +123,6 @@ export function populateData(items,projects){
     }
 
     if(!items.some(itm=>itm.todoTitle === "Sell Item 5")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Sell"),"Sell Item 5");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-01-31";
@@ -147,7 +132,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Gardening Task 1")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Gardening"),"Gardening Task 1");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-08-01";
@@ -157,7 +141,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Gardening Task 2")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Gardening"),"Gardening Task 2");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-09-11";
@@ -167,7 +150,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Gardening Task 3")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Gardening"),"Gardening Task 3");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-07-23";
@@ -177,7 +159,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Gardening Task 4")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Gardening"),"Gardening Task 4");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-11-10";
@@ -187,7 +168,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Gardening Task 5")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Gardening"),"Gardening Task 5");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-02-22";
@@ -197,7 +177,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Studying Task 1")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Studying"),"Studying Task 1");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-01-15";
@@ -207,7 +186,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Studying Task 2")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Studying"),"Studying Task 2");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-03-01";
@@ -217,7 +195,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Studying Task 3")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Studying"),"Studying Task 3");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-08-31";
@@ -227,7 +204,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Studying Task 4")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Studying"),"Studying Task 4");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-03-31";
@@ -237,7 +213,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Studying Task 5")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Studying"),"Studying Task 5");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-01-30";
@@ -247,7 +222,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Vacation Task 1")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Vacation"),"Vacation Task 1");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-07-30";
@@ -257,7 +231,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Vacation Task 2")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Vacation"),"Vacation Task 2");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-09-31";
@@ -267,7 +240,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Vacation Task 3")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Vacation"),"Vacation Task 3");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-07-31";
@@ -277,7 +249,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Vacation Task 4")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Vacation"),"Vacation Task 4");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-02-28";
@@ -287,7 +258,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "Vacation Task 5")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"Vacation"),"Vacation Task 5");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-11-25";
@@ -297,7 +267,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "The Odin Project - Task 1")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"TOP"),"The Odin Project - Task 1");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-07-31";
@@ -307,7 +276,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "The Odin Project - Task 2")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"TOP"),"The Odin Project - Task 2");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-03-11";
@@ -317,7 +285,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "The Odin Project - Task 3")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"TOP"),"The Odin Project - Task 3");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2026-01-15";
@@ -327,7 +294,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "The Odin Project - Task 4")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"TOP"),"The Odin Project - Task 4");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-04-30";
@@ -337,7 +303,6 @@ export function populateData(items,projects){
     }
     
     if(!items.some(itm=>itm.todoTitle === "The Odin Project - Task 5")){
-        alert("Continue...");
         item = new TodoItem(generateId(),getProjectId(projects,"TOP"),"The Odin Project - Task 5");
         item.todoDescription = item.todoTitle + " " + "Description"
         item.todoDueDate = "2025-11-10";

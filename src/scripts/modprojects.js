@@ -25,6 +25,7 @@ export function modProjects(items,projects,projectId=""){
 function populateForm(items,projects,projectId){
     let itemsToShow;
     let itemList = document.querySelector("#item-list");
+    itemList.style.fontSize = "0.75rem";
     if(!projectId){
         document.querySelector("#project-title").value = "";
         document.querySelector("#project-desc").value = "";
@@ -32,6 +33,7 @@ function populateForm(items,projects,projectId){
     }else {
         for(let i = 0;i < projects.length;i++){
             if(projects[i].projectId === projectId){
+                itemList.style.backgroundColor = projects[i].projectColor;
                 document.querySelector("#project-title").value = projects[i].projectTitle;
                 document.querySelector("#project-desc").value = projects[i].projectDescription;
                 document.querySelector("#project-color").value = projects[i].projectColor;

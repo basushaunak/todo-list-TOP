@@ -63,20 +63,31 @@ export function modTodoItems(items,projects,itemId=""){
                   title="Enter checklist, if any"
                 ></textarea>
                 <label for = "item-iscompleted">Task Completed</label>
-                <input type="checkbox" id="item-iscompleted" name="item-iscompleted">
-                <div id="buttons">
-                  <button type="button" id="btn-save">Save</button>
-                  <button type="button" id="btn-reset">Reset</button>
-                  <button type="button" id="btn-close">Close</button>
-                </div>
-              </div>
-              <div id="buffer">Buffer</div>
-              <div id="project-details">
-                <p>Project Details</p>
-              </div>`
+                <input type="checkbox" id="item-iscompleted" name="item-iscompleted">`
+    if(itemId){
+      htmlString += `<div id="buttons">
+                      <button type="button" id="btn-save" title="Save Changes">Save</button>
+                      <button type="button" id="btn-reset" title="Undo Changes">Reset</button>
+                      <button type="button" id="btn-remove"  title="Remove this item">Remove</button>
+                      <button type="button" id="btn-close" title="Quit Item modification">Close</button>
+                    </div></div>`
+    }else{
+      htmlString += `<div id="buttons">
+                      <button type="button" id="btn-save" title="Save Changes">Save</button>
+                      <button type="button" id="btn-reset" title="Undo Changes">Reset</button>
+                      <button type="button" id="btn-close" title="Quit Item modification">Close</button>
+                    </div></div>`
+    }
+    // htmlString += `</div>
+    //                 <div id="buffer">Buffer</div>
+    //                 <div id="project-details">
+    //                   <p>Project Details</p>
+    //                 </div>`
+    
     mainContent.innerHTML=htmlString;
     mainContent.style.display = 'grid';
-    mainContent.style.gridTemplateColumns = '2fr 1fr 1fr';
+    document.querySelector("#buttons").style.gridTemplateColumns = "repeat(4, 1fr)"
+    //mainContent.style.gridTemplateColumns = '2fr 1fr 1fr';
     initForm(items,projects,itemId);
     document.querySelector("#btn-save").addEventListener("click",()=>{
       if(saveItem(items,projects,itemId)){

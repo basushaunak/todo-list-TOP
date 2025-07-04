@@ -138,8 +138,10 @@ export function runTodoApp() {
     }
     todoData=[];
   }
-  if(window.confirm("Do you want fill with sample data? WARNING: It is extremely infuriating/irritating!!!")){
-    populateData(todoItems,projects);
+  if(!todoItems){
+    if(window.confirm("Do you want fill with sample data?")){
+      populateData(todoItems,projects);
+    }
   }
   if (projects.length === 0) {
     projects.push(new Project(generateId(), "Default", "Default Project"));
