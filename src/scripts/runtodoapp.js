@@ -1,3 +1,4 @@
+import "./css/runtodo-styles.css";
 import {
   isLocalStorageAvailable,
   showMessage,
