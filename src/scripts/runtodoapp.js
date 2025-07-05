@@ -6,6 +6,7 @@ import {
   readData,
   startOfWeek,
   endOfWeek,
+  showProjectsOnSideBar
 } from "./utils.js";
 import { Project } from "./project.js";
 import { TodoItem } from "./todoitem.js";
@@ -13,6 +14,7 @@ import {todoItemList} from "./todoitemlist.js";
 import {modTodoItems} from "./modtodoitems.js";
 import {populateData} from "./populatedata.js";
 import {projectList} from "./projectlist.js";
+import { modProjects } from "./modprojects.js";
 
 export function runTodoApp() {
   let projData = [];
@@ -94,10 +96,12 @@ export function runTodoApp() {
   });
   menuProjects.addEventListener("click",(e)=>{
     switch(e.target.id){
-      case "txt-all-projects":
+      case "txt-projects-all":
         projectList(todoItems,projects);
         break;
-      case "txt-new-project":
+      case "txt-project-new":
+        // alert("txt-new-project");
+        modProjects(todoItems,projects);
         break;
       default:
         todoItemList(todoItems,projects,["PRJ",e.target.id,e.target.innerText]);
@@ -147,13 +151,14 @@ export function runTodoApp() {
   if (projects.length === 0) {
     projects.push(new Project(generateId(), "Default", "Default Project"));
   }
-  let str ;
-  projects.sort((a,b)=>a.projectTitle.localeCompare(b.projectTitle));
-  for(let i = 0; i < projects.length; i++){
-    str = ``;
-    str = `<p id=${projects[i].projectId}>${projects[i].projectTitle}</p>`;
-    menuProjects.innerHTML += str;
-  }
+  showProjectsOnSideBar(projects,menuProjects);
+  // let str ;
+  // projects.sort((a,b)=>a.projectTitle.localeCompare(b.projectTitle));
+  // for(let i = 0; i < projects.length; i++){
+  //   str = ``;
+  //   str = `<p id=${projects[i].projectId}>${projects[i].projectTitle}</p>`;
+  //   menuProjects.innerHTML += str;
+  // }
   todoItems.sort((a,b)=>a.todoDueDate.localeCompare(b.todoDueDate));
   todoItemList(todoItems,projects,false);
 }

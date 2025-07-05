@@ -191,3 +191,16 @@ export function getProjectId(array, title) {
   array.push(new Project(projId, title));
   return projId;
 }
+
+export function showProjectsOnSideBar(projects,menuProjects){
+  let str;
+  menuProjects.innerHTML = `<p class="sidebar-heading" id="txt-projects-all">Projects</p>
+                            <p id="txt-project-new">New Project...</p>`
+  projects.sort((a,b)=>a.projectTitle.localeCompare(b.projectTitle));
+  for(let i = 0; i < projects.length; i++){
+    str = ``;
+    str = `<p id=${projects[i].projectId}>${projects[i].projectTitle}</p>`;
+    menuProjects.innerHTML += str;
+  }
+  str = "";
+}

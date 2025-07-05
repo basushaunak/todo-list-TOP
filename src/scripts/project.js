@@ -3,11 +3,11 @@ export class Project {
   #projectTitle;
   #projectDescription;
   #projectColor;
-  constructor(id, title, desc = "") {
+  constructor(id, title, desc = "",color = "#545454") {
     this.#projectId = id;
     this.#projectTitle = title;
     this.#projectDescription = desc;
-    this.#projectColor = "#545454";
+    this.#projectColor = color;
   }
   set projectId(id) {
     //Cant be changed
