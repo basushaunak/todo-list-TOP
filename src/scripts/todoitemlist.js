@@ -21,9 +21,6 @@ export function todoItemList(items,projects,filter = false){
                               </tr>
                             </table> 
                           </div>`;
-  // document.querySelector("#item-list-div").style.height = "calc(100vh-5rem)";
-  // document.querySelector("#item-list-div").style.width = "95%";
-  // document.querySelector("#item-list-div").style.overflow = "scroll";
   const itemList = document.querySelector("#item-list-table");
   document.querySelector("#item-list-div").addEventListener("dblclick",(e)=>{
     let closestRow = e.target.closest("tr");
@@ -47,6 +44,8 @@ export function todoItemList(items,projects,filter = false){
           showMessage(`List of Todo Items for the period ${filter[1]} to ${filter[2]}`)
           break;
         case "DT": //Specific Date
+          itemsToShow = items.filter(item=>item.todoDueDate === filter[1]);
+          showMessage(`List of Todo Items for ${filter[1]}`);
           break;
         case "PRJ":
           itemsToShow = items.filter(item=> item.projectId === filter[1]);
@@ -87,15 +86,15 @@ export function todoItemList(items,projects,filter = false){
     prio = itemsToShow[i].todoPriority;
     switch(prio){
       case "Normal":{
-        tempStr += `<td style="background-color: yellow; color: black">${prio}</td>`;
-        break;
-      }
-      case "High":{
         tempStr += `<td style="background-color: orange; color: black">${prio}</td>`;
         break;
       }
+      case "High":{
+        tempStr += `<td style="background-color: red; color: black">${prio}</td>`;
+        break;
+      }
       case "Low":{
-        tempStr += `<td style="background-color: green; color: black">${prio}</td>`;
+        tempStr += `<td style="background-color: lime; color: black">${prio}</td>`;
         break;
       }
     }

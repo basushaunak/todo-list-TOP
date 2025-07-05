@@ -18,7 +18,7 @@ option{
 #item-list-table{
   cursor : cell;
   user-select : none;
-  border-spacing : 0.25rem;
+  border-spacing : 0.05rem;
 }
 
 td{

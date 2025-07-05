@@ -89,7 +89,12 @@ export function runTodoApp() {
         }
       case "btn-date-go":
         {
-          showMessage(`Todo Items for ${document.querySelector("#filter-date").value}`,msgDiv);
+          if(!(document.querySelector("#filter-date").value.length === 0)){
+            todoItemList(todoItems,projects,["DT",document.querySelector("#filter-date").value,]);
+          }else{
+            alert("You must specify a date");
+          }
+          // showMessage(`Todo Items for ${document.querySelector("#filter-date").value}`,msgDiv);
           break;
         }
     }

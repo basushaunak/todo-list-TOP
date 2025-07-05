@@ -21,13 +21,16 @@ th{
   padding-inline-start: 0.5em;
 }
 
-#project-list{
+#project-list-table{
   width: 100%;
+  cursor : cell;
+  user-select : none;
+  border-spacing : 0.05rem;
 }
 
 
 th:hover{
-  cursor:pointer;
+  cursor:not-allowed;
 }
 
 td{

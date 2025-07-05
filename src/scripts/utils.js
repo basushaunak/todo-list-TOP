@@ -194,8 +194,8 @@ export function getProjectId(array, title) {
 
 export function showProjectsOnSideBar(projects,menuProjects){
   let str;
-  menuProjects.innerHTML = `<p class="sidebar-heading" id="txt-projects-all">Projects</p>
-                            <p id="txt-project-new">New Project...</p>`
+  menuProjects.innerHTML = `<p class="sidebar-heading" id="txt-projects-all" title="Show All Projects">Projects</p>
+                            <p id="txt-project-new" title="Add a new Project">New Project...</p>`
   projects.sort((a,b)=>a.projectTitle.localeCompare(b.projectTitle));
   for(let i = 0; i < projects.length; i++){
     str = ``;
