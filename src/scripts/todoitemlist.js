@@ -1,5 +1,6 @@
 import { modTodoItems } from "./modtodoitems.js";
 import {hexToRGB, writeData, removeData, showMessage, getTextColor} from "./utils.js";
+import "../css/todoitemlist-styles.css";
 
 export function todoItemList(items,projects,filter = false){
   document.querySelector("#details").innerHTML = `<div id="heading"></div>
@@ -16,6 +17,7 @@ export function todoItemList(items,projects,filter = false){
                                 <th style="width: 25ch">TODO Title</th>
                                 <th style="width: 25ch">Project</th>
                                 <th style="width: 35ch">Description</th>
+                                <th style="width: 12ch">Priority</th>
                               </tr>
                             </table> 
                           </div>`;
@@ -23,9 +25,6 @@ export function todoItemList(items,projects,filter = false){
   // document.querySelector("#item-list-div").style.width = "95%";
   // document.querySelector("#item-list-div").style.overflow = "scroll";
   const itemList = document.querySelector("#item-list-table");
-  itemList.style.cursor = "cell";
-  itemList.style.userSelect = "none";
-  itemList.style.borderSpacing = "0.25rem";
   document.querySelector("#item-list-div").addEventListener("dblclick",(e)=>{
     let closestRow = e.target.closest("tr");
     if(closestRow && closestRow.id){
@@ -67,6 +66,7 @@ export function todoItemList(items,projects,filter = false){
   let tmpBGColor;
   let tmpFGColor;
   let projTitle;
+  let prio;
 
   for(let i = 0;i<itemsToShow.length;i++){
     tempStr = ``;
@@ -83,6 +83,23 @@ export function todoItemList(items,projects,filter = false){
     tempStr += `<td>${itemsToShow[i].todoTitle}</td>`;
     tempStr += `<td>${projTitle}</td>`;
     tempStr += `<td>${itemsToShow[i].todoDescription}</td>`;
+
+    prio = itemsToShow[i].todoPriority;
+    switch(prio){
+      case "Normal":{
+        tempStr += `<td style="background-color: yellow; color: black">${prio}</td>`;
+        break;
+      }
+      case "High":{
+        tempStr += `<td style="background-color: orange; color: black">${prio}</td>`;
+        break;
+      }
+      case "Low":{
+        tempStr += `<td style="background-color: green; color: black">${prio}</td>`;
+        break;
+      }
+    }
+    
     tempStr += `</tr>`;
     itemList.innerHTML += tempStr;
     document.querySelector(`#T${itemsToShow[i].todoId}`).style.color = tmpFGColor;

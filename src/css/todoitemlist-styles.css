@@ -1,1 +1,44 @@
 /* Stylesheet for todoitemlist.js */
+
+#item-list-div{
+  align-self: start;
+  justify-self: start;
+  margin-top: 2rem;
+  width: 95%;
+  margin-inline: auto;
+  /* height: calc(100vh-25rem); */
+  /* overflow-y: scroll; */
+}
+
+
+option{
+  border: 1px var(--gray-200) solid;
+}
+
+#item-list-table{
+  cursor : cell;
+  user-select : none;
+  border-spacing : 0.25rem;
+}
+
+td{
+    border: 1px solid hsl(0, 0%, 50%);
+    height: 1.5rem;
+}
+
+th{
+  background-color: hsl(0, 0%, 35%);
+  color: white;
+  font-style: bold;
+  height: 2rem;
+  text-align: left;
+  padding-inline-start: 0.5em;
+}
+
+th:hover{
+  cursor:pointer;
+}
+
+td{
+  padding-inline: 0.5em;
+}

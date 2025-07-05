@@ -1,1 +1,35 @@
 /* Stylesheet for projectlist.js */
+
+#project-list-div{
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+td{
+    border: 1px solid hsl(0, 0%, 50%);
+    background-color: white;
+    height: 1.5rem;
+}
+
+th{
+  background-color: hsl(0, 0%, 35%);
+  color: white;
+  font-style: bold;
+  height: 2rem;
+  text-align: left;
+  padding-inline-start: 0.5em;
+}
+
+#project-list{
+  width: 100%;
+}
+
+
+th:hover{
+  cursor:pointer;
+}
+
+td{
+  padding-inline: 0.5em;
+}
