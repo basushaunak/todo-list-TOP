@@ -66,3 +66,37 @@ option{
   cursor: pointer;
   color: var(--red-500);
 }
+
+#item-details-dialog{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background-color: var(--gray-200);
+}
+
+#item-details-dialog  h1{
+  font-family: "Inter",sans-serif;
+}
+
+#item-details-dialog button{
+  font-style: bold;
+  padding: 0.25em 1em;
+  display: block;
+  margin-inline: auto;
+  margin-block: 1rem;
+}
+
+#dialog-item-desc{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#proj-title-dialog{
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+  text-align: right;
+  margin-inline-end: 1em;
+}

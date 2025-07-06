@@ -22,6 +22,13 @@ export function todoItemList(items,projects,filter = false){
                             </table> 
                           </div>`;
   const itemList = document.querySelector("#item-list-table");
+  document.querySelector("#item-list-div").addEventListener("contextmenu",(e)=>{
+    e.preventDefault();
+    let closestRow = e.target.closest("tr");
+    if(closestRow && closestRow.id){
+      showItem(items,projects,closestRow.id.slice(1));
+    }
+  })
   document.querySelector("#item-list-div").addEventListener("dblclick",(e)=>{
     let closestRow = e.target.closest("tr");
     if(closestRow && closestRow.id){
@@ -77,7 +84,7 @@ export function todoItemList(items,projects,filter = false){
         break;
       }
     }
-    tempStr = `<tr id="T${itemsToShow[i].todoId}">`;
+    tempStr = `<tr id="T${itemsToShow[i].todoId}" title="Double click to edit, right click to view">`;
     tempStr += `<td>${itemsToShow[i].todoDueDate}</td>`;
     tempStr += `<td>${itemsToShow[i].todoTitle}</td>`;
     tempStr += `<td>${projTitle}</td>`;
@@ -124,4 +131,42 @@ export function todoItemList(items,projects,filter = false){
       mainContent.innerHTML = "";
     })
   }
+}
+
+function showItem(items,projects,todoItemId){
+  let dialog = document.createElement("dialog");
+  let str;
+  dialog.id = "item-details-dialog";
+  for(let i = 0; i < items.length; i++){
+    if(items[i].todoId === todoItemId){
+      let buffer;
+      for(let j = 0;j<projects.length;j++){
+        if(projects[j].projectId === items[i].projectId){
+          buffer = projects[j].projectTitle;
+        }
+      }
+      str = `<h1>${items[i].todoTitle}</h1>
+              <p id="proj-title-dialog">Project: ${buffer}</p>
+              <p>${items[i].todoDescription}</p>
+              <div id="dialog-item-desc">
+                <p>Priority: </p><p>${items[i].todoPriority}</p>
+                <p>Due By: </p><p>${items[i].todoDueDate}, ${items[i].todoDueTime} Hrs</p>
+                <p>Location: </p><p>${items[i].todoLocation?items[i].todoLocation:""}</p>
+                <p>Participants: </p><p>${items[i].todoParticipants?items[i].todoParticipants:""}</p>
+                <p>Checklist: </p><p>${items[i].todoCheckList?items[i].todoCheckList:""}</p>
+                <p>Notes: </p><p>${items[i].todoNotes?items[i].todoNotes:""}</p>
+                <p>Completed: </p><p>${items[i].todoIsCompleted?"Yes":"No"}</p>
+              </div>
+              <button type="button" id="close-dialog">Close</button>`;
+    }
+  }
+  dialog.innerHTML += str;
+  document.querySelector("#main-content").appendChild(dialog);
+  dialog.showModal();
+  document.querySelector("#close-dialog").addEventListener("click",()=>{
+    dialog.close();
+    document.querySelector("#main-content").removeChild(dialog);
+  })
+
+  // document.querySelector("#main-content").removeChild(dialog);
 }
