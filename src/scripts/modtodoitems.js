@@ -1,3 +1,4 @@
+import  "../css/modtodoitems-styles.css";
 import {TodoItem} from "./todoitem.js";
 import {generateId, getProjectId} from "./utils.js";
 
@@ -78,6 +79,7 @@ export function modTodoItems(items,projects,itemId=""){
                       <button type="button" id="btn-close" title="Quit Item modification">Close</button>
                     </div></div>`
     }
+    htmlString += `<div id="project-list-div">Project List Div</div>`
     // htmlString += `</div>
     //                 <div id="buffer">Buffer</div>
     //                 <div id="project-details">

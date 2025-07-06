@@ -1,15 +1,19 @@
 /* Stylesheet for todoitemlist.js */
 
+#main-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 #item-list-div{
   align-self: start;
   justify-self: start;
   margin-top: 2rem;
   width: 95%;
   margin-inline: auto;
-  /* height: calc(100vh-25rem); */
-  /* overflow-y: scroll; */
 }
-
 
 option{
   border: 1px var(--gray-200) solid;

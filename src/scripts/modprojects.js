@@ -5,7 +5,7 @@ import {showMessage, generateId, showProjectsOnSideBar} from "./utils.js";
 
 export function modProjects(items,projects,projectId=""){
     const mainContent = document.querySelector("#main-content");
-    const msgDiv = document.querySelector("#statys-message");
+    const msgDiv = document.querySelector("#status-message");
     let str = `<div id="project-mod">
                     <div id="project-details-div">
                     <p>Project Name (Title):</p><input type="text" id="project-title" title="Enter Project Name">

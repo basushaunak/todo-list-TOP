@@ -1,1 +1,48 @@
 /* Stylesheet for modtodoitems.js */
+#main-content{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+
+#item-due-date {
+  width: 13.5ch;
+}
+
+#item-due-time {
+  width: 9ch;
+}
+
+#input-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#project-list-div{
+    background-color: blue;
+
+}
+#buttons {
+  grid-column: span 2;
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+  justify-items: center;
+  align-items: center;
+}
+
+input,
+textarea,
+button,
+select {
+  font-size: 1rem;
+}
+
+input,
+textarea,
+select {
+  width: 20ch;
+}

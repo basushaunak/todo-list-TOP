@@ -48,19 +48,6 @@ html {
   /* height: 100vh; */
 }
 
-input,
-textarea,
-button,
-select {
-  font-size: 1rem;
-}
-
-input,
-textarea,
-select {
-  width: 12ch;
-}
-
 button {
   padding: 0.5em 1em;
   max-width: 15ch;
@@ -90,14 +77,6 @@ h1 {
 
 h1:hover {
   color: greenyellow;
-}
-
-#buttons {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
 }
 
 .highlighted-text {
@@ -157,7 +136,6 @@ h1:hover {
     color: var(--pure-black);
 }
 #heading {
-  /* border: 1px var(--pure-black) solid; */
   text-align: center;
   font-size: 1.5rem;
   display: flex;
@@ -193,6 +171,7 @@ h1:hover {
   text-align: center;
   color: var(--red-500);
   margin-inline-start: 0px;
+  font-weight: bold;
 }
 
 #content {
@@ -214,24 +193,6 @@ h1:hover {
 #details {
   display: grid;
   grid-template-rows: 0.5fr 6fr 1fr 0.25fr;
-  /* height: calc(100vh - 5rem); */
-}
-
-#input-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 1rem;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-#item-due-date {
-  width: 13ch;
-}
-
-#item-due-time {
-  width: 10ch;
 }
 
 @media screen and (width > 1000px) {
@@ -249,35 +210,5 @@ h1:hover {
   #content {
     grid-template-columns: 1fr 5fr;
   }
-}
-
-
-#main-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-#project-details-div{
-  width: clamp(475px, 80%,550px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-#project-mod{
-  width: 80%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-inline: auto;
-  gap: 1rem;
-}
-
-#proj-buttons{
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  margin-block-start: 2rem;
 }
 
