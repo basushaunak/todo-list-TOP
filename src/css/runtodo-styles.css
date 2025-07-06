@@ -124,11 +124,11 @@ h1:hover {
   color: var(--pure-white);
   font-size: 1rem;
   margin-block: 1rem;
-  width: 13ch;
+  width: 15ch;
 }
 
 #btn-date-go{
-    padding:0.25rem;
+    padding:0.25rem 0.75rem;
     font-size: 1rem;
     font-weight: normal;
     margin-inline-start: 0.25rem;
@@ -142,13 +142,13 @@ h1:hover {
   font-weight: bold;
 }
 
-#buffer {
+/* #buffer {
   display: none;
-}
+} */
 
-#project-details {
+/* #project-details {
   display: none;
-}
+} */
 
 #projects-div {
   margin-block-start: 2rem;
@@ -201,9 +201,9 @@ h1:hover {
     background-color: var(--gray-600);
     color: var(--pure-white);
   }
-  #buffer {
+  /* #buffer {
     display: block;
-  }
+  } */
   #project-details {
     display: block;
   }

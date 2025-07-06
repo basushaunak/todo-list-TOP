@@ -3,108 +3,121 @@ import {TodoItem} from "./todoitem.js";
 import {generateId, getProjectId} from "./utils.js";
 
 export function modTodoItems(items,projects,itemId=""){
-    const mainContent = document.querySelector("#main-content");
-    let projTitle = "";
-    let htmlString = `<div id="input-details">
-                <p>Title:</p>
-                <input
-                  type="text"
-                  id="item-title" required 
-                  title="Enter 'to-do' title/name"
-                />
-                <p>Project:</p>
-                <input
-                  type="text"
-                  id="item-project" required 
-                  title="Enter Project Name"
-                />
-                <p>Description:</p>
-                <input
-                  type="text"
-                  id="item-description" required 
-                  title="Enter description of todo item"
-                />
-                <p>Priority(Low,Normal,High):</p>
-                <select id="item-priority">
-                  <option value="low">Low</option>
-                  <option value="normal" selected>Normal</option>
-                  <option value="high">High</option>
-                </select>
-                <p>Due Date:</p>
-                <input
-                  type="date"
-                  id="item-due-date" required 
-                  title="Enter Due by date"
-                />
-                <p>Due Time:</p>
-                <input
-                  type="time" required 
-                  id="item-due-time"
-                  title="Enter Due by time"
-                />
-                <p>Location:</p>
-                <input
-                  type="text"
-                  id="item-location"
-                  title="Enter location of task, if applicable"
-                />
-                <p>Notes:</p>
-                <textarea
-                  id="item-notes"
-                  title="Enter notes, if any"
-                ></textarea>
-                <p>Participants (Comma Separated):</p>
-                <textarea
-                  id="item-participants"
-                  title="Enter list of participants, if any"
-                ></textarea>
-                <p>Checklist (Comma Separated):</p>
-                <textarea
-                  id="item-checklist"
-                  title="Enter checklist, if any"
-                ></textarea>
-                <label for = "item-iscompleted">Task Completed</label>
-                <input type="checkbox" id="item-iscompleted" name="item-iscompleted">`
-    if(itemId){
-      htmlString += `<div id="buttons">
-                      <button type="button" id="btn-save" title="Save Changes">Save</button>
-                      <button type="button" id="btn-reset" title="Undo Changes">Reset</button>
-                      <button type="button" id="btn-remove"  title="Remove this item">Remove</button>
-                      <button type="button" id="btn-close" title="Quit Item modification">Close</button>
-                    </div></div>`
-    }else{
-      htmlString += `<div id="buttons">
-                      <button type="button" id="btn-save" title="Save Changes">Save</button>
-                      <button type="button" id="btn-reset" title="Undo Changes">Reset</button>
-                      <button type="button" id="btn-close" title="Quit Item modification">Close</button>
-                    </div></div>`
+  const mainContent = document.querySelector("#main-content");
+  let projTitle = "";
+  let htmlString = `<div id="input-details">
+              <p>Title:</p>
+              <input
+                type="text"
+                id="item-title" required 
+                title="Enter 'to-do' title/name"
+              />
+              <p>Project:</p>
+              <input
+                type="text"
+                id="item-project" required 
+                title="Enter Project Name"
+              />
+              <p>Description:</p>
+              <input
+                type="text"
+                id="item-description" required 
+                title="Enter description of todo item"
+              />
+              <p>Priority(Low,Normal,High):</p>
+              <select id="item-priority">
+                <option value="Low">Low</option>
+                <option value="Normal" selected>Normal</option>
+                <option value="High">High</option>
+              </select>
+              <p>Due Date:</p>
+              <input
+                type="date"
+                id="item-due-date" required 
+                title="Enter Due by date"
+              />
+              <p>Due Time:</p>
+              <input
+                type="time" required 
+                id="item-due-time"
+                title="Enter Due by time"
+              />
+              <p>Location:</p>
+              <input
+                type="text"
+                id="item-location"
+                title="Enter location of task, if applicable"
+              />
+              <p>Notes:</p>
+              <textarea
+                id="item-notes"
+                title="Enter notes, if any"
+              ></textarea>
+              <p>Participants (Comma Separated):</p>
+              <textarea
+                id="item-participants"
+                title="Enter list of participants, if any"
+              ></textarea>
+              <p>Checklist (Comma Separated):</p>
+              <textarea
+                id="item-checklist"
+                title="Enter checklist, if any"
+              ></textarea>
+              <p>Task Completed</p>
+              <input type="checkbox" id="item-iscompleted" name="item-iscompleted">`
+  if(itemId){
+    htmlString += `<div id="buttons-item">
+                    <button type="button" id="btn-item-save" title="Save Changes">Save</button>
+                    <button type="button" id="btn-item-reset" title="Undo Changes">Reset</button>
+                    <button type="button" id="btn-item-delete"  title="Delete this item">Delete</button>
+                    <button type="button" id="btn-item-close" title="Quit Item modification">Close</button>
+                  </div></div>`
+  }else{
+    htmlString += `<div id="buttons-item">
+                    <button type="button" id="btn-item-save" title="Save Changes">Save</button>
+                    <button type="button" id="btn-item-reset" title="Undo Changes">Reset</button>
+                    <button type="button" id="btn-item-close" title="Quit Item modification">Close</button>
+                  </div></div>`
+  }
+  htmlString += `<div id="project-list-div">Project List Div</div>`
+  // htmlString += `</div>
+  //                 <div id="buffer">Buffer</div>
+  //                 <div id="project-details">
+  //                   <p>Project Details</p>
+  //                 </div>`
+  
+  mainContent.innerHTML=htmlString;
+  mainContent.style.display = 'grid';
+  if(itemId){
+    document.querySelector("#buttons-item").style.gridTemplateColumns = "repeat(4, 1fr)";
+  }else{
+    document.querySelector("#buttons-item").style.gridTemplateColumns = "repeat(3, 1fr)";
+  }
+  //mainContent.style.gridTemplateColumns = '2fr 1fr 1fr';
+  initForm(items,projects,itemId);
+  document.querySelector("#buttons-item").addEventListener("click",(e)=>{
+    let btn = e.target.id;
+    switch(btn){
+      case "btn-item-save":
+        if(saveItem(items,projects,itemId)){
+          projTitle = document.querySelector("#item-project").value;
+          initForm(items,projects,"");
+          document.querySelector("#item-project").value = projTitle;
+          document.querySelector("#item-title").focus();
+        }
+        break;
+      case "btn-item-reset":
+        initForm(items,projects,itemId);
+        break;
+      case "btn-item-close":
+        alert("Clicked close");
+        break;
+      case "btn-item-delete":
+        deleteItem(items,itemId);
+        // alert("Clicked Delete");
+        break;
     }
-    htmlString += `<div id="project-list-div">Project List Div</div>`
-    // htmlString += `</div>
-    //                 <div id="buffer">Buffer</div>
-    //                 <div id="project-details">
-    //                   <p>Project Details</p>
-    //                 </div>`
-    
-    mainContent.innerHTML=htmlString;
-    mainContent.style.display = 'grid';
-    document.querySelector("#buttons").style.gridTemplateColumns = "repeat(4, 1fr)"
-    //mainContent.style.gridTemplateColumns = '2fr 1fr 1fr';
-    initForm(items,projects,itemId);
-    document.querySelector("#btn-save").addEventListener("click",()=>{
-      if(saveItem(items,projects,itemId)){
-        projTitle = document.querySelector("#item-project").value;
-        initForm(items,projects,"");
-        document.querySelector("#item-project").value = projTitle;
-        document.querySelector("#item-title").focus();
-      }
-    });
-    document.querySelector("#btn-reset").addEventListener("click",()=>{
-      initForm(items,projects,itemId);
-    });
-    document.querySelector("#btn-close").addEventListener("click",()=>{
-      alert("Clicked Close");
-    });
+  })
 }
 
 function initForm(items,projects,itemId){
@@ -193,9 +206,9 @@ function saveItem(items,projects,itemId = ""){
   }
 item.todoDescription = document.querySelector("#item-description").value;
 if(document.querySelector("#item-priority").value){
-  item.todoPriority = document.querySelector("#item-priority").value;
+  item.todoPriority = document.querySelector("#item-priority").value;  
 }else{
-  item.todoPriority = "Normal";
+  item.todoPriority.value = "Normal";
 }  
 item.todoDueDate = document.querySelector("#item-due-date").value;
 item.todoDueTime = document.querySelector("#item-due-time").value;
@@ -227,4 +240,17 @@ if(!itemId){
     }
     return true;
 }
+}
+
+function deleteItem(items,itemId){
+  if(!itemId){
+    return false;
+  }
+  for(let i = 0; items.length; i++){
+    if(items[i].todoId === itemId){
+      alert("Item Deleted: "+items[i].todoTitle);
+      items.splice(i,1);
+      return;
+    }
+  }
 }

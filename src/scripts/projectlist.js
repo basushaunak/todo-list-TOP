@@ -1,3 +1,4 @@
+import "../css/projectlist-styles.css";
 import { modProjects } from "./modprojects.js";
 import {showMessage, getTextColor,hexToRGB} from "./utils.js";
 

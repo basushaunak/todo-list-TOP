@@ -25,12 +25,12 @@ option{
   border-spacing : 0.05rem;
 }
 
-td{
+#item-list-table td{
     border: 1px solid hsl(0, 0%, 50%);
     height: 1.5rem;
 }
 
-th{
+#item-list-table th{
   background-color: hsl(0, 0%, 35%);
   color: white;
   font-style: bold;
@@ -39,10 +39,10 @@ th{
   padding-inline-start: 0.5em;
 }
 
-th:hover{
+#item-list-table th:hover{
   cursor:pointer;
 }
 
-td{
+#item-list-table td{
   padding-inline: 0.5em;
 }
