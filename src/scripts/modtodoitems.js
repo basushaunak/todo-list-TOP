@@ -80,20 +80,14 @@ export function modTodoItems(items,projects,itemId=""){
                   </div></div>`
   }
   htmlString += `<div id="project-list-div">Project List Div</div>`
-  // htmlString += `</div>
-  //                 <div id="buffer">Buffer</div>
-  //                 <div id="project-details">
-  //                   <p>Project Details</p>
-  //                 </div>`
   
   mainContent.innerHTML=htmlString;
-  mainContent.style.display = 'grid';
   if(itemId){
     document.querySelector("#buttons-item").style.gridTemplateColumns = "repeat(4, 1fr)";
   }else{
     document.querySelector("#buttons-item").style.gridTemplateColumns = "repeat(3, 1fr)";
   }
-  //mainContent.style.gridTemplateColumns = '2fr 1fr 1fr';
+  
   initForm(items,projects,itemId);
   document.querySelector("#buttons-item").addEventListener("click",(e)=>{
     let btn = e.target.id;
@@ -113,7 +107,10 @@ export function modTodoItems(items,projects,itemId=""){
         alert("Clicked close");
         break;
       case "btn-item-delete":
-        deleteItem(items,itemId);
+        if(deleteItem(items,itemId)){
+          itemId = "";
+          initForm(items,projects,itemId);
+        };
         // alert("Clicked Delete");
         break;
     }
@@ -168,7 +165,6 @@ function initForm(items,projects,itemId){
     }
   }
 }
-
 
 function saveItem(items,projects,itemId = ""){
   let enteredDate = document.querySelector("#item-due-date").value;
@@ -239,7 +235,7 @@ if(!itemId){
       }
     }
     return true;
-}
+  }
 }
 
 function deleteItem(items,itemId){
@@ -248,7 +244,6 @@ function deleteItem(items,itemId){
   }
   for(let i = 0; items.length; i++){
     if(items[i].todoId === itemId){
-      alert("Item Deleted: "+items[i].todoTitle);
       items.splice(i,1);
       return;
     }
