@@ -31,8 +31,8 @@ export function projectList(items,projects){
 
 
     if(projects.length === 0){
-        document.querySelector("#item-list-div").style.display = "none";
-        showMessage("There are no Todo-Items",msgDiv);
+        document.querySelector("#project-list-div").style.display = "none";
+        showMessage("There are no Projects",msgDiv);
         return -1;
     }
     let tempStr = ``;

@@ -71,6 +71,9 @@ export function modProjects(items,projects,projectId=""){
                 break;
             }
             case "btn-prj-delete":{
+                if(!window.confirm("Do you really want to delete this project?")){
+                    return;
+                }
                 let deleted = deleteProject(items,projects,projectId);
                 switch(deleted) {
                     case -1:{

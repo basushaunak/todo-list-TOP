@@ -1,6 +1,7 @@
 import  "../css/modtodoitems-styles.css";
 import {TodoItem} from "./todoitem.js";
-import {generateId, getProjectId} from "./utils.js";
+import {generateId, getProjectId, getTextColor, hexToRGB} from "./utils.js";
+import {todoItemList} from "./todoitemlist.js";
 
 export function modTodoItems(items,projects,itemId=""){
   const mainContent = document.querySelector("#main-content");
@@ -79,9 +80,16 @@ export function modTodoItems(items,projects,itemId=""){
                     <button type="button" id="btn-item-close" title="Quit Item modification">Close</button>
                   </div></div>`
   }
-  htmlString += `<div id="project-list-div">Project List Div</div>`
+  htmlString += `<div id="project-list-div">
+                  <table id="project-list-table">
+                    <tr>
+                      <th style="width: 20ch">Project Title</th>
+                    </tr>
+                  </table>
+                </div>`
   
   mainContent.innerHTML=htmlString;
+  
   if(itemId){
     document.querySelector("#buttons-item").style.gridTemplateColumns = "repeat(4, 1fr)";
   }else{
@@ -104,13 +112,16 @@ export function modTodoItems(items,projects,itemId=""){
         initForm(items,projects,itemId);
         break;
       case "btn-item-close":
-        alert("Clicked close");
+        todoItemList();
         break;
       case "btn-item-delete":
-        if(deleteItem(items,itemId)){
-          itemId = "";
-          initForm(items,projects,itemId);
-        };
+        if(!window.confirm("Do you really want to delete this item?")){
+          return;
+        }
+          if(deleteItem(items,itemId)){
+            itemId = "";
+            initForm(items,projects,itemId);
+          };
         // alert("Clicked Delete");
         break;
     }
@@ -118,6 +129,8 @@ export function modTodoItems(items,projects,itemId=""){
 }
 
 function initForm(items,projects,itemId){
+    let projectList = document.querySelector("#project-list-table");
+    let str = ``;
     if(itemId ===""){
     document.querySelector("#heading").innerText = "Add new TODO Item";
     document.querySelector("#item-project").value = "";
@@ -164,6 +177,13 @@ function initForm(items,projects,itemId){
       }
     }
   }
+  for(let i = 0; i<projects.length;i++){
+    str += `<tr><td style="background-color: ${projects[i].projectColor}; color: #${getTextColor(hexToRGB(projects[i].projectColor))}">${projects[i].projectTitle}</td></tr>`;
+  }
+  projectList.innerHTML += str;
+  projectList.addEventListener("click",(e)=>{
+    document.querySelector("#item-project").value = e.target.innerText;
+  })
 }
 
 function saveItem(items,projects,itemId = ""){

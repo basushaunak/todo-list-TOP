@@ -105,11 +105,7 @@ export function todoItemList(items,projects,filter = false){
     document.querySelector(`#T${itemsToShow[i].todoId}`).style.backgroundColor = tmpBGColor;
   }
   if(!filter){
-    document.querySelector("#item-list-div").innerHTML += `<div id="buttons"><button type="button" id="btn-save-data" title="Save data to localStorage">Save</button><button type="button" id="btn-remove-data" title="Remove ALL data from localStorage">Remove</button></div>`
-    document.querySelector("#buttons").style.marginBlockStart = "1rem";
-    document.querySelector("#buttons").style.display = "grid";
-    document.querySelector("#buttons").style.gridTemplateColumns = "1fr 1fr";
-    document.querySelector("#btn-save-data").style.width = "9em";
+    document.querySelector("#item-list-div").innerHTML += `<div id="itemlist-buttons"><button type="button" id="btn-save-data" title="Save data to localStorage">Save</button><button type="button" id="btn-remove-data" title="Remove ALL data from localStorage">Remove</button></div>`
     document.querySelector("#btn-save-data").addEventListener("click",()=>{
       writeData("todoItems",items);
       writeData("projects",projects);

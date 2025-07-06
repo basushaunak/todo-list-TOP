@@ -48,7 +48,8 @@ html {
   /* height: 100vh; */
 }
 
-button {
+
+#tasks-div button {
   padding: 0.5em 1em;
   max-width: 15ch;
   background-color: var(--gray-600);
@@ -62,7 +63,7 @@ p {
   margin-block: 0.25rem;
 }
 
-button:hover {
+#tasks-div button:hover {
   cursor: pointer;
   color: var(--red-500);
 }
