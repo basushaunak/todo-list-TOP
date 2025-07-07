@@ -30,6 +30,10 @@
   align-items: center;
 }
 
+#buttons-item button{
+  padding: 0.25rem 1rem;
+}
+
 input,
 textarea,
 button,

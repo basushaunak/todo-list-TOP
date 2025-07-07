@@ -112,7 +112,7 @@ export function modTodoItems(items,projects,itemId=""){
         initForm(items,projects,itemId);
         break;
       case "btn-item-close":
-        todoItemList();
+        todoItemList(items,projects,false);
         break;
       case "btn-item-delete":
         if(!window.confirm("Do you really want to delete this item?")){
