@@ -83,7 +83,7 @@ export function modTodoItems(items,projects,itemId=""){
   htmlString += `<div id="project-list-div">
                   <table id="project-list-table">
                     <tr>
-                      <th style="width: 20ch">Project Title</th>
+                      <th style="width: 20ch">Project (Click to select)</th>
                     </tr>
                   </table>
                 </div>`
@@ -177,8 +177,12 @@ function initForm(items,projects,itemId){
       }
     }
   }
+  let tmpFGColor;
+  let tmpBGColor;
   for(let i = 0; i<projects.length;i++){
-    str += `<tr><td style="background-color: ${projects[i].projectColor}; color: #${getTextColor(hexToRGB(projects[i].projectColor))}">${projects[i].projectTitle}</td></tr>`;
+    tmpBGColor = projects[i].projectColor;
+    tmpFGColor = getTextColor(hexToRGB(projects[i].projectColor));
+    str += `<tr><td style="background-color: ${tmpBGColor}; color: ${tmpFGColor}">${projects[i].projectTitle}</td></tr>`;
   }
   projectList.innerHTML += str;
   projectList.addEventListener("click",(e)=>{
@@ -249,7 +253,6 @@ if(!itemId){
   for(let i = 0;i<items.length;i++){
       if(items[i].todoId === itemId){
         items[i] = item;
-        alert("Edits saved");
         console.log(item);
         break;
       }

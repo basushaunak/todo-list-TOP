@@ -145,7 +145,7 @@ export function getOppositeColorRGB(rgb) {
 
 export function getTextColor(rgb) {
   const luminance = 0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b;
-  return luminance > 128 ? "black" : "white";
+  return luminance > 128 ? "#000000" : "#ffffff";
 }
 
 export function readData(dataName) {
