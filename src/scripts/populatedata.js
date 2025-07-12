@@ -9,32 +9,32 @@ export function populateData(items,projects){
     let project;
     if(!projects.some(prj=>prj.projectTitle=== "Buy")){
         project = new Project(generateId(),"Buy","Buy - todo");
-        project.projectColor = "#faca06";
+        project.projectColor = "#f7d7d7";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Sell")){
         project = new Project(generateId(),"Sell","Sell - todo");
-        project.projectColor = "#50fa7b";
+        project.projectColor = "#e2f1cf";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Gardening")){
         project = new Project(generateId(),"Gardening","Gardening - todo");
-        project.projectColor = "#f2ad69";   
+        project.projectColor = "#d3ebf7";   
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Studying")){
         project = new Project(generateId(),"Studying","Studying - todo");
-        project.projectColor = "#ff5555";
+        project.projectColor = "#6886d0";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "Vacation")){
         project = new Project(generateId(),"Vacation","Vacation - todo");
-        project.projectColor = "#f9930a";
+        project.projectColor = "#f0d7f7";
         projects.push(project);
     }
     if(!projects.some(prj=>prj.projectTitle=== "TOP")){
         project = new Project(generateId(),"TOP","TOP Course Planner - todo");
-        project.projectColor = "#6272a4";
+        project.projectColor = "#e89dcb";
         projects.push(project);
     }
 

@@ -25,6 +25,7 @@ export function runTodoApp() {
   const msgDiv = document.querySelector("#status-message");
   const menuTasks = document.querySelector("#tasks-div");
   const menuProjects = document.querySelector("#projects-div");
+
   menuTasks.addEventListener("click",(e)=>{
     switch (e.target.id){
       case "txt-all-tasks":
@@ -152,7 +153,7 @@ export function runTodoApp() {
     if(window.confirm("Do you want fill with sample data?")){
       populateData(todoItems,projects);
     }
-  }
+  }  
   if (projects.length === 0) {
     projects.push(new Project(generateId(), "Default", "Default Project"));
   }
