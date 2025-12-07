@@ -13,7 +13,7 @@ import { Project } from "./project.js";
 // }
 
 export function generateId(){
-    return crypto.randomUUID();
+    return window.crypto.randomUUID();
 }
 
 export function startOfWeek(date=new Date())
